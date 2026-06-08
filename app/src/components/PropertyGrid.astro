@@ -1,0 +1,41 @@
+---
+import type { Property } from '../types/griin';
+import PropertyCard from './PropertyCard.astro';
+
+interface Props {
+  properties: Property[];
+  eagerCount?: number;
+}
+
+const { properties, eagerCount = 3 } = Astro.props;
+---
+
+{properties.length > 0 ? (
+  <ul class="property-grid" role="list">
+    {properties.map((property, i) => (
+      <li class="property-grid__item">
+        <PropertyCard property={property} loading={i < eagerCount ? 'eager' : 'lazy'} />
+      </li>
+    ))}
+  </ul>
+) : (
+  <p class="property-grid__empty">No hay propiedades para mostrar por ahora.</p>
+)}
+
+<style>
+  .property-grid {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2rem);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .property-grid__item { display: flex; }
+  .property-grid__item > :global(*) { inline-size: 100%; }
+  .property-grid__empty {
+    padding-block: 3rem;
+    text-align: center;
+    color: var(--color-ink-muted);
+  }
+</style>

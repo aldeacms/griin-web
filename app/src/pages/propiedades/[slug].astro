@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactForm from '../../components/ContactForm.astro';
+import {
+  getProperties, getConfig,
+  formatCLP, formatUF, formatM2, imgSrc, imgAlt,
+} from '../../lib/content';
+import type { Property } from '../../types/griin';
+
+export async function getStaticPaths() {
+  const properties = await getProperties();
+  return properties.map((property) => ({
+    params: { slug: property.slug },
+    props: { property },
+  }));
+}
+
+interface Props { property: Property }
+const { property: p } = Astro.props;
+const config = await getConfig();
+
+const opLabel = p.operacion === 'venta' ? 'En venta' : 'En arriendo';
+const isArriendo = p.operacion === 'arriendo';
+const tipoLabel = p.tipo.charAt(0).toUpperCase() + p.tipo.slice(1);
+
+const priceMain = formatCLP(p.precio_clp);
+const priceSub = isArriendo ? 'Valor mensual' : formatUF(p.precio_uf);
+
+const waMsg = `Hola, me interesa la propiedad "${p.titulo}" (Cód. ${p.codigo}). ¿Me cuentas más?`;
+const waUrl = `https://wa.me/${config.whatsapp.numero}?text=${encodeURIComponent(waMsg)}`;
+
+// Ficha de datos: solo lo que existe.
+const fichaItems = [
+  { label: 'Código', value: p.codigo },
+  { label: 'Operación', value: opLabel },
+  { label: 'Tipo', value: tipoLabel },
+  { label: 'Comuna', value: p.comuna },
+  { label: 'Dormitorios', value: p.dormitorios?.toString() },
+  { label: 'Baños', value: p.banos?.toString() },
+  { label: 'Estacionamientos', value: p.estacionamientos?.toString() },
+  { label: 'Superficie construida', value: formatM2(p.superficie_construida_m2) || null },
+  { label: 'Superficie terreno', value: formatM2(p.superficie_terreno_m2) || null },
+].filter((it) => it.value);
+
+const amenities = p.amenities?.map((a) => a.texto).filter(Boolean) ?? [];
+const galeria = p.galeria ?? [];
+const cover = galeria[0];
+
+// Video embebible (YouTube/Vimeo). Si no es reconocible, se ofrece como link.
+function embedUrl(url: string): string | null {
+  if (!url) return null;
+  const yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/);
+  if (yt) return `https://www.youtube.com/embed/${yt[1]}`;
+  const vm = url.match(/vimeo\.com\/(\d+)/);
+  if (vm) return `https://player.vimeo.com/video/${vm[1]}`;
+  return null;
+}
+const videoEmbed = embedUrl(p.video_url);
+
+const title = `${p.titulo} — ${config.marca.nombre}`;
+const description = p.descripcion.slice(0, 160);
+const ogImage = imgSrc(cover) || undefined;
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage}>
+  <article class="property">
+    <nav class="property__crumbs container" aria-label="Ruta de navegación">
+      <a href="/">Inicio</a>
+      <span aria-hidden="true">/</span>
+      <a href="/propiedades">Propiedades</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">{p.titulo}</span>
+    </nav>
+
+    <header class="property__head container">
+      <div class="property__head-text">
+        <p class="eyebrow">{opLabel} · {tipoLabel}</p>
+        <h1 class="property__title">{p.titulo}</h1>
+        <p class="property__location">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          {p.comuna}
+        </p>
+      </div>
+      <p class="property__price">
+        <span class="property__price-main">{priceMain}</span>
+        {priceSub && <span class="property__price-sub">{priceSub}</span>}
+      </p>
+    </header>
+
+    {galeria.length > 0 && (
+      <section class="property__gallery container" aria-label="Galería de fotos">
+        <figure class="property__gallery-main">
+          <img src={imgSrc(cover)} alt={imgAlt(cover, p.titulo)} fetchpriority="high" width="1280" height="854" />
+        </figure>
+        {galeria.length > 1 && (
+          <ul class="property__thumbs" role="list">
+            {galeria.slice(1, 9).map((g, i) => (
+              <li>
+                <img class="property__thumb" src={imgSrc(g)} alt={imgAlt(g, `${p.titulo} — foto ${i + 2}`)} loading="lazy" width="320" height="240" />
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    )}
+
+    <div class="property__layout container">
+      <div class="property__content">
+        {fichaItems.length > 0 && (
+          <section class="property__block">
+            <h2 class="property__block-title">Ficha técnica</h2>
+            <dl class="property__ficha">
+              {fichaItems.map((it) => (
+                <div class="property__ficha-row">
+                  <dt>{it.label}</dt>
+                  <dd>{it.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </section>
+        )}
+
+        <section class="property__block">
+          <h2 class="property__block-title">Descripción</h2>
+          <p class="property__description">{p.descripcion}</p>
+        </section>
+
+        {amenities.length > 0 && (
+          <section class="property__block">
+            <h2 class="property__block-title">Características y servicios</h2>
+            <ul class="property__amenities" role="list">
+              {amenities.map((a) => (
+                <li class="property__amenity">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {videoEmbed ? (
+          <section class="property__block">
+            <h2 class="property__block-title">Video</h2>
+            <div class="property__video">
+              <iframe src={videoEmbed} title={`Video de ${p.titulo}`} loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </section>
+        ) : p.video_url ? (
+          <section class="property__block">
+            <h2 class="property__block-title">Video</h2>
+            <a class="btn btn--ghost" href={p.video_url} target="_blank" rel="noopener noreferrer">Ver video de la propiedad</a>
+          </section>
+        ) : null}
+      </div>
+
+      <aside class="property__aside">
+        <div class="property__cta">
+          <h2 class="property__cta-title">¿Te interesa esta propiedad?</h2>
+          <p class="property__cta-text">Cuéntanos y te acompañamos en todo el proceso.</p>
+          <a class="btn btn--primary btn--block" href={waUrl} target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.821 11.821 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.316 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.599 5.317l-.999 3.648 3.866-1.012zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            Escríbenos por WhatsApp
+          </a>
+          <div class="property__cta-divider"><span>o envíanos un mensaje</span></div>
+          <ContactForm compact asunto={`Propiedad ${p.codigo} — ${p.titulo}`} mensaje={waMsg} />
+        </div>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .property { padding-block: clamp(1.5rem, 4vw, 2.5rem) clamp(3rem, 7vw, 5rem); }
+
+  .property__crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--color-ink-muted);
+    margin-block-end: 1.5rem;
+  }
+  .property__crumbs a { color: var(--color-ink-soft); }
+  .property__crumbs a:hover { color: var(--color-brand-strong); }
+
+  .property__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-block-end: 2rem;
+  }
+  .property__title { font-size: var(--text-title); margin: 0.5rem 0; }
+  .property__location {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    color: var(--color-ink-soft);
+  }
+  .property__location svg { color: var(--color-brand-strong); }
+  .property__price { display: flex; flex-direction: column; align-items: flex-end; margin: 0; text-align: right; }
+  .property__price-main { font-family: var(--font-heading); font-size: 2rem; font-weight: 700; color: var(--color-ink); line-height: 1.1; }
+  .property__price-sub { font-size: 0.95rem; color: var(--color-ink-muted); }
+
+  /* Galería */
+  .property__gallery { margin-block-end: clamp(2rem, 5vw, 3.5rem); }
+  .property__gallery-main {
+    margin: 0 0 0.85rem;
+    border-radius: var(--radius-lg);
+    overflow: clip;
+    aspect-ratio: 3 / 2;
+    background-color: var(--color-surface-sunken);
+  }
+  .property__gallery-main img { inline-size: 100%; block-size: 100%; object-fit: cover; }
+  .property__thumbs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.85rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .property__thumb {
+    inline-size: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+  }
+  @media (max-width: 40rem) {
+    .property__thumbs { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* Layout principal */
+  .property__layout {
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+  .property__content { display: flex; flex-direction: column; gap: clamp(2rem, 4vw, 2.75rem); min-inline-size: 0; }
+  .property__block-title {
+    font-size: var(--text-subtitle);
+    margin: 0 0 1rem;
+    padding-block-end: 0.6rem;
+    border-block-end: 2px solid var(--color-brand-soft);
+  }
+  .property__description { color: var(--color-ink-soft); line-height: 1.8; white-space: pre-line; margin: 0; }
+
+  .property__ficha {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: clip;
+  }
+  .property__ficha-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.85rem 1.1rem;
+  }
+  .property__ficha-row:nth-child(odd) { background-color: var(--color-surface-sunken); }
+  .property__ficha-row dt { color: var(--color-ink-muted); font-size: 0.9rem; }
+  .property__ficha-row dd { margin: 0; font-weight: 600; color: var(--color-ink); text-align: right; }
+
+  .property__amenities {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+    gap: 0.6rem 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .property__amenity { display: flex; align-items: flex-start; gap: 0.55rem; color: var(--color-ink-soft); }
+  .property__amenity svg { flex: 0 0 auto; margin-block-start: 0.2rem; color: var(--color-brand-strong); }
+
+  .property__video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+    overflow: clip;
+    background-color: var(--color-surface-sunken);
+  }
+  .property__video iframe { position: absolute; inset: 0; inline-size: 100%; block-size: 100%; border: 0; }
+
+  /* Aside CTA */
+  .property__cta {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+  .property__cta-title { font-size: 1.25rem; margin: 0; }
+  .property__cta-text { margin: 0; color: var(--color-ink-soft); font-size: 0.95rem; }
+  .property__cta-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-ink-muted);
+    font-size: 0.8rem;
+    margin-block: 0.25rem;
+  }
+  .property__cta-divider::before,
+  .property__cta-divider::after {
+    content: "";
+    flex: 1;
+    block-size: 1px;
+    background-color: var(--color-border);
+  }
+
+  @media (min-width: 64rem) {
+    .property__layout { grid-template-columns: minmax(0, 1.7fr) minmax(20rem, 1fr); }
+    .property__ficha { grid-template-columns: repeat(2, 1fr); }
+    .property__ficha-row:nth-child(odd) { background-color: var(--color-surface); }
+    .property__ficha-row:nth-child(4n+1),
+    .property__ficha-row:nth-child(4n+2) { background-color: var(--color-surface-sunken); }
+    .property__aside { position: sticky; inset-block-start: 5.5rem; }
+  }
+</style>

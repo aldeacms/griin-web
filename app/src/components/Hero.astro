@@ -1,0 +1,136 @@
+---
+import { getHero, imgSrc, imgAlt } from '../lib/content';
+
+const hero = await getHero();
+const bgSrc = imgSrc(hero.imagen_fondo);
+const bgAlt = imgAlt(hero.imagen_fondo, 'Paisaje del sur de Chile');
+const ubicaciones = hero.ubicaciones.map((u) => u.texto);
+---
+
+<section class="hero">
+  <img class="hero__bg" src={bgSrc} alt={bgAlt} fetchpriority="high" width="1920" height="1080" />
+  <div class="hero__veil" aria-hidden="true"></div>
+
+  <div class="container hero__inner">
+    <p class="eyebrow hero__eyebrow">{hero.eyebrow}</p>
+    <h1 class="hero__title">{hero.titulo}</h1>
+
+    {ubicaciones.length > 0 && (
+      <ul class="hero__locations" aria-label="Zonas que cubrimos">
+        {ubicaciones.map((u) => (
+          <li class="hero__location">{u}</li>
+        ))}
+      </ul>
+    )}
+
+    {/* Buscador solo visual (placeholder). Los filtros reales llegan en v1.1. */}
+    <form class="hero__search" action="/propiedades" role="search">
+      <span class="hero__search-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      </span>
+      <input
+        class="hero__search-input"
+        type="search"
+        name="q"
+        placeholder={hero.buscador_placeholder}
+        aria-label="Buscar propiedades"
+      />
+      <button class="btn btn--primary hero__search-btn" type="submit">Buscar</button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-block-size: min(85vh, 46rem);
+    padding-block: clamp(4rem, 10vw, 7rem);
+    overflow: hidden;
+    isolation: isolate;
+    color: var(--color-on-brand);
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+  .hero__veil {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(180deg, rgb(10 24 16 / 0.35) 0%, rgb(10 24 16 / 0.55) 100%),
+      linear-gradient(90deg, rgb(10 24 16 / 0.5) 0%, transparent 70%);
+  }
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    max-width: 46rem;
+  }
+  .hero__eyebrow { color: color-mix(in srgb, var(--color-brand) 75%, white); }
+  .hero__eyebrow::before { background-color: var(--color-brand); }
+  .hero__title {
+    font-size: var(--text-display);
+    color: var(--color-on-brand);
+    margin: 0;
+  }
+  .hero__locations {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .hero__location {
+    font-family: var(--font-heading);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-pill);
+    background-color: color-mix(in srgb, var(--color-on-brand) 14%, transparent);
+    backdrop-filter: blur(4px);
+  }
+
+  .hero__search {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    inline-size: 100%;
+    max-width: 38rem;
+    margin-block-start: 0.75rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-xl);
+    background-color: color-mix(in srgb, var(--color-surface) 95%, transparent);
+    box-shadow: var(--shadow-card);
+  }
+  .hero__search-icon {
+    display: inline-flex;
+    padding-inline-start: 0.85rem;
+    color: var(--color-brand-strong);
+  }
+  .hero__search-input {
+    flex: 1 1 12rem;
+    min-inline-size: 0;
+    border: none;
+    background: transparent;
+    padding: 0.65rem 0.5rem;
+    font-size: 1rem;
+    color: var(--color-ink);
+  }
+  .hero__search-input::placeholder { color: var(--color-ink-muted); }
+  .hero__search-input:focus { outline: none; }
+  .hero__search-btn { flex: 0 0 auto; }
+
+  @media (max-width: 36rem) {
+    .hero__search-btn { flex: 1 1 100%; }
+  }
+</style>

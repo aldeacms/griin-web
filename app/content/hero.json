@@ -1,0 +1,23 @@
+{
+  "eyebrow": "Propiedades en el sur de Chile",
+  "titulo": "Tu próximo hogar es Griin",
+  "imagen_fondo": {
+    "src": "/assets/branding/destacada.jpg",
+    "alt": "Paisaje del sur de Chile"
+  },
+  "ubicaciones": [
+    {
+      "texto": "Frutillar"
+    },
+    {
+      "texto": "Llanquihue"
+    },
+    {
+      "texto": "Puerto Varas"
+    },
+    {
+      "texto": "Puerto Montt"
+    }
+  ],
+  "buscador_placeholder": "Busca por comuna, tipo o código…"
+}

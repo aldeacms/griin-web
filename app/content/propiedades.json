@@ -1,0 +1,1484 @@
+[
+  {
+    "slug": "casa-en-parcela-frutillar-cod-1013",
+    "codigo": "1013",
+    "titulo": "Casa en Parcela, Frutillar",
+    "operacion": "venta",
+    "tipo": "casa",
+    "comuna": "Frutillar",
+    "precio_clp": 180000000,
+    "precio_uf": 4560,
+    "superficie_construida_m2": 110,
+    "superficie_terreno_m2": 5000,
+    "dormitorios": 4,
+    "banos": 2,
+    "estacionamientos": 2,
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Aislación térmica en poliuretano expandido"
+      },
+      {
+        "texto": "Sistema de calefacción por combustión lenta"
+      },
+      {
+        "texto": "Bodega independiente"
+      },
+      {
+        "texto": "Invernadero"
+      },
+      {
+        "texto": "Huerta establecida"
+      },
+      {
+        "texto": "Jardines desarrollados"
+      },
+      {
+        "texto": "Árboles nativos"
+      },
+      {
+        "texto": "Caminos internos compactados"
+      },
+      {
+        "texto": "Sistema propio de tratamiento de agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Mantenimiento áreas comunes: 1 UF mensual"
+      }
+    ],
+    "descripcion": "Se ofrece a la venta una propiedad de 110 m² en un 95% terminada. Ubicada en una parcelación consolidada, a solo 10 minutos del centro urbano de Frutillar. La vivienda cuenta con aislación térmica en poliuretano expandido y sistema de calefacción mediante combustión lenta. La casa dispone 4 dormitorios (principal en suite) y 2 baños completos. El área social se organiza en una planta abierta que integra living, comedor y cocina, un diseño pensado para maximizar la amplitud, la iluminación natural y la circulación fluida entre los espacios. No se encuentra regularizada. La propiedad se emplaza en un proyecto con urbanización avanzada, que incluye caminos internos compactados, sistema propio con sala de tratamiento de agua, empalme eléctrico y conectividad mediante fibra óptica. El mantenimiento de las áreas comunes tiene un costo mensual de 1 UF. En el exterior, el terreno dispone de jardines desarrollados y presencia de árboles nativos, complementados con una infraestructura debidamente ejecutada que incluye bodega independiente, un área productiva con invernadero de estructura sólida y huerta establecida. Cuenta con espacio para estacionamiento para dos vehículos.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/01.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/02.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/03.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/04.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/05.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/06.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/07.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 7"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/08.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 8"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/09.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 9"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/10.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 10"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/11.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 11"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/12.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 12"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/13.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 13"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/14.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 14"
+      },
+      {
+        "src": "/assets/propiedades/casa-en-parcela-frutillar-cod-1013/15.webp",
+        "alt": "Casa en Parcela, Frutillar — foto 15"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "se-vende-moderna-casa-en-frutillar-cod-1014",
+    "codigo": "1014",
+    "titulo": "Se vende Moderna Casa en Frutillar",
+    "operacion": "venta",
+    "tipo": "casa",
+    "comuna": "Frutillar",
+    "precio_clp": 318733760,
+    "precio_uf": 8000,
+    "superficie_construida_m2": 160,
+    "superficie_terreno_m2": 5000,
+    "dormitorios": 4,
+    "banos": 3,
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Internet"
+      },
+      {
+        "texto": "Calefacción central con caldera a pellet"
+      },
+      {
+        "texto": "Losa radiante"
+      },
+      {
+        "texto": "Sistema 100% eléctrico"
+      },
+      {
+        "texto": "Acumulador de agua"
+      },
+      {
+        "texto": "Generador con transferencia manual"
+      },
+      {
+        "texto": "Terraza techada y cerrada"
+      },
+      {
+        "texto": "Oficina privada"
+      },
+      {
+        "texto": "Logia con lavadero"
+      },
+      {
+        "texto": "2 bodegas"
+      },
+      {
+        "texto": "Altillo"
+      },
+      {
+        "texto": "Huerto orgánico"
+      },
+      {
+        "texto": "Zona de juegos infantiles"
+      },
+      {
+        "texto": "Acceso controlado con portón eléctrico"
+      },
+      {
+        "texto": "Cámaras de vigilancia"
+      },
+      {
+        "texto": "Servicios soterrados en condominio"
+      },
+      {
+        "texto": "Gasto común: 1 UF"
+      }
+    ],
+    "descripcion": "Propiedad de 160 m² con arquitectura en panel SIP, revestida en tejuelas y metal negro. Amplio espacio integrado de sala, comedor y cocina con altos techos de madera. Cocina equipada con encimera, horno eléctrico, campana negra, lavavajillas, isla con taburetes y cubiertas de cuarzo. Dormitorio principal en suite con vestidor. 4 dormitorios (2 en suite) y 3 baños completos. Piso de porcelanato y ventanas termopanel con vidrio Blindex. Parcela plana de 5.000 m² con árboles nativos, huerto y zona de juegos con columpios, tirolesa y voleibol. Ubicada en parcelación con administración establecida, servicios soterrados, caminos compactados y drenajes. A 10 minutos del centro de Frutillar, 35 del aeropuerto, 20 de Puerto Varas y 45 de Puerto Montt. Opción de venta amoblada sujeta a evaluación.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/01.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/02.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/03.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/04.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/05.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/06.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/07.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 7"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/08.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 8"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/09.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 9"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/10.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 10"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/11.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 11"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/12.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 12"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/13.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 13"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/14.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 14"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-moderna-casa-en-frutillar-cod-1014/15.webp",
+        "alt": "Se vende Moderna Casa en Frutillar — foto 15"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "venta-casa-en-parcela-en-frutillar-cod-1015",
+    "codigo": "1015",
+    "titulo": "Venta casa en parcela, Frutillar",
+    "operacion": "venta",
+    "tipo": "casa",
+    "comuna": "Frutillar",
+    "precio_clp": 214000000,
+    "precio_uf": 5280,
+    "superficie_construida_m2": 100,
+    "superficie_terreno_m2": 5000,
+    "dormitorios": 3,
+    "banos": 2,
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Estufa a pellet"
+      },
+      {
+        "texto": "Aire acondicionado"
+      },
+      {
+        "texto": "Cortinas roller"
+      },
+      {
+        "texto": "Portón eléctrico"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Bodega exterior"
+      },
+      {
+        "texto": "Terraza"
+      }
+    ],
+    "descripcion": "Se vende esta casa pensada para quienes buscan vivir la tranquilidad real del sur. Con 100 m² construidos y una distribución de planta abierta, el espacio se siente amplio, iluminado y muy acogedor, integrando el living, el comedor y la cocina americana que conecta directamente con una terraza ideal para las tardes de desconexión. Está ubicada en una parcela de 5.000 m² donde la privacidad es total; aquí el patio no es solo pasto, es un entorno vivo con árboles nativos y hermosos arrayanes que rodean la propiedad. La casa cuenta con 3 dormitorios cómodos, 2 baños completos y una pequeña bodega exterior, además de estar perfectamente equipada para el clima de la zona con estufa a pellet y aire acondicionado, asegurando un ambiente cálido durante todo el año. Pensando en la comodidad diaria, las ventanas ya tienen sus cortinas roller instaladas y el acceso es mediante un portón eléctrico. Vivir aquí te permite combinar la paz del bosque con la facilidad de estar a solo 5 minutos del centro de Frutillar. Es parcelación segura y consolidada, que te ofrece la tranquilidad del campo junto con la comodidad de tener fibra óptica de alta velocidad para trabajar desde casa.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/01.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/02.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/03.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/04.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/05.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/06.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/07.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 7"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/08.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 8"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/09.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 9"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/10.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 10"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/11.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 11"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/12.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 12"
+      },
+      {
+        "src": "/assets/propiedades/venta-casa-en-parcela-en-frutillar-cod-1015/13.webp",
+        "alt": "Venta casa en parcela, Frutillar — foto 13"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "hermosa-parcela-cercada-en-fundo-praderas-de-frutillar-cod-1002",
+    "codigo": "1002",
+    "titulo": "Hermosa Parcela Cercada en Fundo Praderas de Frutillar",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "Fundo Praderas de Frutillar",
+    "precio_clp": 58000000,
+    "precio_uf": 1463,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Sala de tratamiento de agua potable"
+      },
+      {
+        "texto": "Drenaje de aguas lluvias"
+      },
+      {
+        "texto": "Administración"
+      },
+      {
+        "texto": "Servicios funcionando"
+      }
+    ],
+    "descripcion": "Se vende parcela de 5.000 m², con un terreno regular y bien cuidado. Se encuentra totalmente cercada y su frontis cuenta con tranqueras. Ubicada en una parcelación consolidada, con administración y servicios funcionando. Ofrece conexión a luz, agua tratada y fibra óptica, todos los suministros de forma soterrada. El acceso es controlado por portón eléctrico (manejo por llamada) y cuenta con cámaras de seguridad. Dispone de una sala de tratamiento de agua potable con mantenciones semanales, garantizando la calidad del suministro. El camino principal es de doble vía, separados por un hermoso bandejón con plantas ornamentales y árboles nativos, lo que proporciona un tránsito seguro y práctico. Además, cuenta con drenes en el camino principal y en calles interiores para un óptimo drenaje de aguas lluvias. Los gastos comunes son de 1 UF.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/hermosa-parcela-cercada-en-fundo-praderas-de-frutillar-cod-1002/01.webp",
+        "alt": "Hermosa Parcela Cercada en Fundo Praderas de Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/hermosa-parcela-cercada-en-fundo-praderas-de-frutillar-cod-1002/02.webp",
+        "alt": "Hermosa Parcela Cercada en Fundo Praderas de Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/hermosa-parcela-cercada-en-fundo-praderas-de-frutillar-cod-1002/03.webp",
+        "alt": "Hermosa Parcela Cercada en Fundo Praderas de Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/hermosa-parcela-cercada-en-fundo-praderas-de-frutillar-cod-1002/04.webp",
+        "alt": "Hermosa Parcela Cercada en Fundo Praderas de Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/hermosa-parcela-cercada-en-fundo-praderas-de-frutillar-cod-1002/05.webp",
+        "alt": "Hermosa Parcela Cercada en Fundo Praderas de Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/hermosa-parcela-cercada-en-fundo-praderas-de-frutillar-cod-1002/06.webp",
+        "alt": "Hermosa Parcela Cercada en Fundo Praderas de Frutillar — foto 6"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "se-vende-parcela-lista-para-construir-en-frutillar-cod-1003",
+    "codigo": "1003",
+    "titulo": "Se vende parcela lista para construir en Frutillar",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "Frutillar, 10 min del centro por ruta V-200 hacia Tegualda",
+    "precio_clp": 42000000,
+    "precio_uf": 1042,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Sistema tratamiento agua potable"
+      },
+      {
+        "texto": "Drenaje aguas lluvias"
+      },
+      {
+        "texto": "Acceso controlado"
+      }
+    ],
+    "descripcion": "Parcela de 5.000 m² en parcelación consolidada con administración propia. Ubicada en esquina con borde de árboles y dren. Cercada en perímetro con tranqueras y portón manual. Suministros soterrados. Camino principal de doble vía con bandejón ornamental. Gasto Común: 1 UF.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/se-vende-parcela-lista-para-construir-en-frutillar-cod-1003/01.webp",
+        "alt": "Se vende parcela lista para construir en Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-parcela-lista-para-construir-en-frutillar-cod-1003/02.webp",
+        "alt": "Se vende parcela lista para construir en Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-parcela-lista-para-construir-en-frutillar-cod-1003/03.webp",
+        "alt": "Se vende parcela lista para construir en Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-parcela-lista-para-construir-en-frutillar-cod-1003/04.webp",
+        "alt": "Se vende parcela lista para construir en Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-parcela-lista-para-construir-en-frutillar-cod-1003/05.webp",
+        "alt": "Se vende parcela lista para construir en Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-parcela-lista-para-construir-en-frutillar-cod-1003/06.webp",
+        "alt": "Se vende parcela lista para construir en Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-parcela-lista-para-construir-en-frutillar-cod-1003/07.webp",
+        "alt": "Se vende parcela lista para construir en Frutillar — foto 7"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-parcela-lista-para-construir-en-frutillar-cod-1003/08.webp",
+        "alt": "Se vende parcela lista para construir en Frutillar — foto 8"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004",
+    "codigo": "1004",
+    "titulo": "Parcela 5.000 m² con Servicios Operativos en Frutillar",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "Frutillar",
+    "precio_clp": 59465000,
+    "precio_uf": 1500,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Sala de tratamiento de agua potable"
+      },
+      {
+        "texto": "Drenes en camino principal"
+      },
+      {
+        "texto": "Rol propio"
+      }
+    ],
+    "descripcion": "Se vende parcela de 5.000 m² en Frutillar, cercada en tres costados, lista para construir y ubicada en una comunidad con administración y servicios en funcionamiento. Ofrece conexión a luz, agua tratada y fibra óptica, todos los suministros de forma soterrada. El acceso es controlado por portón eléctrico (manejo por llamada) y cuenta con cámaras de seguridad. Dispone de una sala de tratamiento de agua potable con mantenciones semanales. El camino principal es de doble vía con bandejón ornamental. Gasto común: 1 UF.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004/01.webp",
+        "alt": "Parcela 5.000 m² con Servicios Operativos en Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004/02.webp",
+        "alt": "Parcela 5.000 m² con Servicios Operativos en Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004/03.webp",
+        "alt": "Parcela 5.000 m² con Servicios Operativos en Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004/04.webp",
+        "alt": "Parcela 5.000 m² con Servicios Operativos en Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004/05.webp",
+        "alt": "Parcela 5.000 m² con Servicios Operativos en Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004/06.webp",
+        "alt": "Parcela 5.000 m² con Servicios Operativos en Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004/07.webp",
+        "alt": "Parcela 5.000 m² con Servicios Operativos en Frutillar — foto 7"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "venta-de-hermosa-parcela-con-arboles-en-frutillar-cod-1005",
+    "codigo": "1005",
+    "titulo": "Venta de Hermosa Parcela con Árboles en Frutillar",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "Frutillar",
+    "precio_clp": 60000000,
+    "precio_uf": 1513,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Drenes para drenaje"
+      },
+      {
+        "texto": "Sala de tratamiento de agua potable"
+      }
+    ],
+    "descripcion": "Se vende hermosa parcela de 5.000 m², ofreciendo un gran espacio para construir en un ambiente acogedor. El terreno está enriquecido con árboles nativos, arrayanes y colihues, garantizando un entorno natural y exclusivo. Esta propiedad se encuentra dentro de una parcelación que asegura una instalación inmediata y sin preocupaciones, gracias a que la administración y todos los servicios esenciales están en pleno funcionamiento.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-arboles-en-frutillar-cod-1005/01.webp",
+        "alt": "Venta de Hermosa Parcela con Árboles en Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-arboles-en-frutillar-cod-1005/02.webp",
+        "alt": "Venta de Hermosa Parcela con Árboles en Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-arboles-en-frutillar-cod-1005/03.webp",
+        "alt": "Venta de Hermosa Parcela con Árboles en Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-arboles-en-frutillar-cod-1005/04.webp",
+        "alt": "Venta de Hermosa Parcela con Árboles en Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-arboles-en-frutillar-cod-1005/05.webp",
+        "alt": "Venta de Hermosa Parcela con Árboles en Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-arboles-en-frutillar-cod-1005/06.webp",
+        "alt": "Venta de Hermosa Parcela con Árboles en Frutillar — foto 6"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "se-vende-preciosa-parcela-con-linda-vista-hacia-el-volcan-osorno-cod-1006",
+    "codigo": "1006",
+    "titulo": "Se Vende Preciosa Parcela con Linda Vista Hacia el Volcán Osorno",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "13 minutos del centro de Frutillar",
+    "precio_clp": 52000000,
+    "precio_uf": 1300,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Drenaje de aguas lluvias"
+      },
+      {
+        "texto": "Sala de tratamiento de agua potable"
+      }
+    ],
+    "descripcion": "Se vende preciosa parcela con linda vista hacia el volcán Osorno y parte del Puntiagudo. De superficie plana, algunos álamos, Cierre perimetral. Ubicada a 13 minutos del centro de Frutillar. El loteo ofrece instalación inmediata y sin preocupaciones, gracias a una administración consolidada y todos los servicios esenciales en pleno funcionamiento.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/se-vende-preciosa-parcela-con-linda-vista-hacia-el-volcan-osorno-cod-1006/01.webp",
+        "alt": "Se Vende Preciosa Parcela con Linda Vista Hacia el Volcán Osorno — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-preciosa-parcela-con-linda-vista-hacia-el-volcan-osorno-cod-1006/02.webp",
+        "alt": "Se Vende Preciosa Parcela con Linda Vista Hacia el Volcán Osorno — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-preciosa-parcela-con-linda-vista-hacia-el-volcan-osorno-cod-1006/03.webp",
+        "alt": "Se Vende Preciosa Parcela con Linda Vista Hacia el Volcán Osorno — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-preciosa-parcela-con-linda-vista-hacia-el-volcan-osorno-cod-1006/04.webp",
+        "alt": "Se Vende Preciosa Parcela con Linda Vista Hacia el Volcán Osorno — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-preciosa-parcela-con-linda-vista-hacia-el-volcan-osorno-cod-1006/05.webp",
+        "alt": "Se Vende Preciosa Parcela con Linda Vista Hacia el Volcán Osorno — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-preciosa-parcela-con-linda-vista-hacia-el-volcan-osorno-cod-1006/06.webp",
+        "alt": "Se Vende Preciosa Parcela con Linda Vista Hacia el Volcán Osorno — foto 6"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007",
+    "codigo": "1007",
+    "titulo": "Se Vende Linda Parcela con Vista a Bosque en Frutillar",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "Fundo Praderas de Frutillar, 13 minutos del centro de Frutillar",
+    "precio_clp": 51000000,
+    "precio_uf": 1273,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico con control por llamada"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Sistema de drenaje"
+      },
+      {
+        "texto": "Tratamiento de agua potable"
+      },
+      {
+        "texto": "Rol propio"
+      }
+    ],
+    "descripcion": "Parcela con cierre perimetral y portón de acceso. Superficie regular con árboles en crecimiento y vista hacia bosque. Entorno natural con atardecer agradable. Comunidad consolidada con servicios esenciales. Acceso controlado, vialidad de doble vía con jardín central. Gasto común: 1 UF.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007/01.webp",
+        "alt": "Se Vende Linda Parcela con Vista a Bosque en Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007/02.webp",
+        "alt": "Se Vende Linda Parcela con Vista a Bosque en Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007/03.webp",
+        "alt": "Se Vende Linda Parcela con Vista a Bosque en Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007/04.webp",
+        "alt": "Se Vende Linda Parcela con Vista a Bosque en Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007/05.webp",
+        "alt": "Se Vende Linda Parcela con Vista a Bosque en Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007/06.webp",
+        "alt": "Se Vende Linda Parcela con Vista a Bosque en Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007/07.webp",
+        "alt": "Se Vende Linda Parcela con Vista a Bosque en Frutillar — foto 7"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "se-vende-linda-parcela-con-vista-al-volcan-osorno-en-frutillar-cod-1008",
+    "codigo": "1008",
+    "titulo": "Se vende linda parcela con vista al volcán Osorno en Frutillar",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "Frutillar",
+    "precio_clp": 56000000,
+    "precio_uf": 1409,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico con cámaras de seguridad"
+      },
+      {
+        "texto": "Sala de tratamiento de agua potable"
+      },
+      {
+        "texto": "Drenes en toda la parcelación"
+      },
+      {
+        "texto": "Calles interiores"
+      },
+      {
+        "texto": "Jardín en bandejón central"
+      }
+    ],
+    "descripcion": "Ubicada a 13 min. del centro de la ciudad, esta propiedad de 5.000 m2 tiene una superficie regular, con una linda vista hacia el Volcán Osorno por el Este y una cortina de Álamos por el Oeste. Lugar muy tranquilo, listo para construir. Cuenta con una administración consolidada y todos los servicios esenciales en pleno funcionamiento. La parcelación dispone de Luz, Agua y Fibra óptica, siendo esta última ideal para el teletrabajo. La calidad del suministro está garantizada por una sala de tratamiento de agua potable que recibe mantenciones semanales. El acceso es controlado con portón eléctrico (manejo por llamada) y con cámaras de seguridad. El camino principal es de doble vía, posee un hermoso jardín en el bandejón central, dispone de drenes en toda la parcelación y calles interiores, para un óptimo drenaje de aguas lluvias. El Gasto Común es de 1 UF.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-al-volcan-osorno-en-frutillar-cod-1008/01.webp",
+        "alt": "Se vende linda parcela con vista al volcán Osorno en Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-al-volcan-osorno-en-frutillar-cod-1008/02.webp",
+        "alt": "Se vende linda parcela con vista al volcán Osorno en Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-al-volcan-osorno-en-frutillar-cod-1008/03.webp",
+        "alt": "Se vende linda parcela con vista al volcán Osorno en Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-al-volcan-osorno-en-frutillar-cod-1008/04.webp",
+        "alt": "Se vende linda parcela con vista al volcán Osorno en Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-al-volcan-osorno-en-frutillar-cod-1008/05.webp",
+        "alt": "Se vende linda parcela con vista al volcán Osorno en Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/se-vende-linda-parcela-con-vista-al-volcan-osorno-en-frutillar-cod-1008/06.webp",
+        "alt": "Se vende linda parcela con vista al volcán Osorno en Frutillar — foto 6"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "oportunidad-de-compra-hermosa-parcela-en-frutillar-cod-1009",
+    "codigo": "1009",
+    "titulo": "¡Oportunidad de compra! Hermosa parcela en venta en Frutillar",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "Frutillar",
+    "precio_clp": 55000000,
+    "precio_uf": 1387,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico con control por llamada"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Sistema de drenaje"
+      },
+      {
+        "texto": "Sala de tratamiento de agua potable"
+      }
+    ],
+    "descripcion": "Se vende parcela de 5.000m2 con linda vista de bosque y praderas. Totalmente cercada, con tranqueras en el frente y el acceso de cruce de dren hecho. Todo listo para construir. Se ubica dentro de parcelación consolidada, con luz, agua y Fibra óptica, todo soterrado. La calidad del suministro está garantizada por una sala de tratamiento de agua potable que recibe mantenciones semanales. El acceso es controlado con portón eléctrico (manejo por llamada) y con cámaras de seguridad. El camino principal es de doble vía, posee un hermoso jardín en el bandejón central, dispone de drenes en toda la parcelación y calles interiores, para un óptimo drenaje de aguas lluvias. El Gasto Común es de 1 UF.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-hermosa-parcela-en-frutillar-cod-1009/01.webp",
+        "alt": "¡Oportunidad de compra! Hermosa parcela en venta en Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-hermosa-parcela-en-frutillar-cod-1009/02.webp",
+        "alt": "¡Oportunidad de compra! Hermosa parcela en venta en Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-hermosa-parcela-en-frutillar-cod-1009/03.webp",
+        "alt": "¡Oportunidad de compra! Hermosa parcela en venta en Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-hermosa-parcela-en-frutillar-cod-1009/04.webp",
+        "alt": "¡Oportunidad de compra! Hermosa parcela en venta en Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-hermosa-parcela-en-frutillar-cod-1009/05.webp",
+        "alt": "¡Oportunidad de compra! Hermosa parcela en venta en Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-hermosa-parcela-en-frutillar-cod-1009/06.webp",
+        "alt": "¡Oportunidad de compra! Hermosa parcela en venta en Frutillar — foto 6"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "venta-de-hermosa-parcela-con-vista-al-volcan-osorno-cod-1010",
+    "codigo": "1010",
+    "titulo": "Venta de Hermosa Parcela con Vista a Volcán Osorno",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "13 min del centro de Frutillar",
+    "precio_clp": 58000000,
+    "precio_uf": 1463,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica soterrada"
+      },
+      {
+        "texto": "Portón eléctrico con apertura de llamada"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Sistema de drenaje"
+      },
+      {
+        "texto": "Sala de distribución de agua"
+      }
+    ],
+    "descripcion": "Propiedad con vista a praderas, volcán Osorno y cortina de Álamos por el Oeste. Dentro de parcelación consolidada con servicios. Luz, agua potabilizable y fibra óptica soterrada. Gasto común: 1 UF mensual.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-vista-al-volcan-osorno-cod-1010/01.webp",
+        "alt": "Venta de Hermosa Parcela con Vista a Volcán Osorno — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-vista-al-volcan-osorno-cod-1010/02.webp",
+        "alt": "Venta de Hermosa Parcela con Vista a Volcán Osorno — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-vista-al-volcan-osorno-cod-1010/03.webp",
+        "alt": "Venta de Hermosa Parcela con Vista a Volcán Osorno — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-vista-al-volcan-osorno-cod-1010/04.webp",
+        "alt": "Venta de Hermosa Parcela con Vista a Volcán Osorno — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-vista-al-volcan-osorno-cod-1010/05.webp",
+        "alt": "Venta de Hermosa Parcela con Vista a Volcán Osorno — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/venta-de-hermosa-parcela-con-vista-al-volcan-osorno-cod-1010/06.webp",
+        "alt": "Venta de Hermosa Parcela con Vista a Volcán Osorno — foto 6"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001",
+    "codigo": "1001",
+    "titulo": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar",
+    "operacion": "venta",
+    "tipo": "parcela",
+    "comuna": "Frutillar, 10 minutos del centro",
+    "precio_clp": 55000000,
+    "precio_uf": 1387,
+    "superficie_construida_m2": "",
+    "superficie_terreno_m2": 5000,
+    "dormitorios": "",
+    "banos": "",
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Rol Propio"
+      },
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Portón eléctrico con control"
+      },
+      {
+        "texto": "Cámaras de seguridad"
+      },
+      {
+        "texto": "Sala de tratamiento de agua potable"
+      },
+      {
+        "texto": "Drenes para drenaje de aguas lluvias"
+      },
+      {
+        "texto": "Administración"
+      }
+    ],
+    "descripcion": "Hermosa parcela de 5.000 m², con terreno regular de puro prado. Cuenta con árboles nativos en crecimiento, cerco vivo y tranqueras en perímetro frontal. Ubicada en parcelación consolidada con servicios soterrados. Acceso controlado por portón eléctrico con cámaras de seguridad. Camino principal de doble vía con bandejón ornamental. Gastos comunes: 1 UF.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/01.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/02.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/03.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/04.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/05.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/06.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/07.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 7"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/08.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 8"
+      },
+      {
+        "src": "/assets/propiedades/oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001/09.webp",
+        "alt": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar — foto 9"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "arriendo-cabana-en-frutillar-bajo",
+    "codigo": "A-105",
+    "titulo": "Arriendo Cabaña en Frutillar Bajo",
+    "operacion": "arriendo",
+    "tipo": "cabaña",
+    "comuna": "Frutillar Bajo",
+    "precio_clp": 330000,
+    "precio_uf": "",
+    "superficie_construida_m2": 55,
+    "superficie_terreno_m2": "",
+    "dormitorios": 1,
+    "banos": 1,
+    "estacionamientos": 1,
+    "amenities": [
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Living-comedor"
+      },
+      {
+        "texto": "Cocina"
+      },
+      {
+        "texto": "Espacio para lavadora y secadora"
+      },
+      {
+        "texto": "Estacionamiento"
+      }
+    ],
+    "descripcion": "Acogedora cabaña de aproximadamente 55 m², ideal para persona sola o matrimonio. La propiedad cuenta con un cómodo living-comedor, una pequeña cocina, 1 amplio dormitorio con espacio suficiente para cama de 2 plazas, veladores y clóset, además de 1 baño completo con tina. En el baño también se encuentra habilitado el espacio para instalación de lavadora y secadora. La cabaña dispone además de estacionamiento para un vehículo. Ubicada en Frutillar Bajo, a pasos del reconocido Teatro del Lago, en un entorno privilegiado para disfrutar diariamente de uno de los principales atractivos turísticos de la zona. Excelente conectividad y cercana a locomoción con dirección a Puerto Montt.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-frutillar-bajo/01.webp",
+        "alt": "Arriendo Cabaña en Frutillar Bajo — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-frutillar-bajo/02.webp",
+        "alt": "Arriendo Cabaña en Frutillar Bajo — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-frutillar-bajo/03.webp",
+        "alt": "Arriendo Cabaña en Frutillar Bajo — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-frutillar-bajo/04.webp",
+        "alt": "Arriendo Cabaña en Frutillar Bajo — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-frutillar-bajo/05.webp",
+        "alt": "Arriendo Cabaña en Frutillar Bajo — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-frutillar-bajo/06.webp",
+        "alt": "Arriendo Cabaña en Frutillar Bajo — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-frutillar-bajo/07.webp",
+        "alt": "Arriendo Cabaña en Frutillar Bajo — foto 7"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "arriendo-cabana-en-los-bajos-frutillar-cod-a102",
+    "codigo": "A-102",
+    "titulo": "Arriendo cabaña en Los Bajos, Frutillar",
+    "operacion": "arriendo",
+    "tipo": "cabaña",
+    "comuna": "Los Bajos, Frutillar",
+    "precio_clp": 750000,
+    "precio_uf": "",
+    "superficie_construida_m2": 60,
+    "superficie_terreno_m2": "",
+    "dormitorios": 2,
+    "banos": 2,
+    "estacionamientos": 2,
+    "amenities": [
+      {
+        "texto": "Agua incluida"
+      },
+      {
+        "texto": "Internet Starlink incluido"
+      },
+      {
+        "texto": "Mantención de jardines incluida"
+      },
+      {
+        "texto": "Calefacción estufa a pellet con control Wi-Fi"
+      },
+      {
+        "texto": "Termo eléctrico Wi-Fi"
+      },
+      {
+        "texto": "Acceso portón eléctrico"
+      },
+      {
+        "texto": "Uso mensual quincho con vista al lago y Hot Tub"
+      }
+    ],
+    "descripcion": "Año corrido. Si buscas arrendar en un lugar privilegiado, tranquilo, con hermosos parajes y bien conectado, esta cabaña de 60 m² en el sector de Los Bajos es para ti. Se encuentra ubicada en una parcela con acceso mediante camino asfaltado (quedando solo el último tramo de 50 metros sobre camino compactado), a menos de 5 minutos del muelle, colegios, bancos, restaurantes, Teatro del Lago, cafés y pastelerías.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/01.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/02.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/03.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/04.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/05.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/06.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/07.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 7"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/08.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 8"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-cabana-en-los-bajos-frutillar-cod-a102/09.webp",
+        "alt": "Arriendo cabaña en Los Bajos, Frutillar — foto 9"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "arriendo-casa-en-parcela-en-frutillar-cod-a104",
+    "codigo": "A-104",
+    "titulo": "Arriendo casa en parcela, Frutillar",
+    "operacion": "arriendo",
+    "tipo": "casa",
+    "comuna": "Frutillar",
+    "precio_clp": 860000,
+    "precio_uf": "",
+    "superficie_construida_m2": 100,
+    "superficie_terreno_m2": 5000,
+    "dormitorios": 3,
+    "banos": 2,
+    "estacionamientos": "",
+    "amenities": [
+      {
+        "texto": "Estufa a pellet"
+      },
+      {
+        "texto": "Aire acondicionado"
+      },
+      {
+        "texto": "Cortinas roller"
+      },
+      {
+        "texto": "Portón eléctrico"
+      },
+      {
+        "texto": "Fibra óptica"
+      },
+      {
+        "texto": "Bodega exterior"
+      },
+      {
+        "texto": "Terraza"
+      }
+    ],
+    "descripcion": "Se arrienda esta casa pensada para quienes buscan vivir la tranquilidad real del sur. Con 100 m² construidos y una distribución de planta abierta, el espacio se siente amplio, iluminado y muy acogedor, integrando el living, el comedor y la cocina americana que conecta directamente con una terraza ideal para las tardes de desconexión. Está ubicada en una parcela de 5.000 m² donde la privacidad es total; aquí el patio no es solo pasto, es un entorno vivo con árboles nativos y hermosos arrayanes que rodean la propiedad. La casa cuenta con 3 dormitorios cómodos, 2 baños completos y una pequeña bodega exterior, además de estar perfectamente equipada para el clima de la zona con estufa a pellet y aire acondicionado, asegurando un ambiente cálido durante todo el año. Pensando en la comodidad diaria, las ventanas ya tienen sus cortinas roller instaladas y el acceso es mediante un portón eléctrico. Vivir aquí te permite combinar la paz del bosque con la facilidad de estar a solo 5 minutos del centro de Frutillar. Es parcelación segura y consolidada, que te ofrece la tranquilidad del campo junto con la comodidad de tener fibra óptica de alta velocidad para trabajar desde casa.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/01.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/02.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/03.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/04.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/05.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/06.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/07.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 7"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/08.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 8"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/09.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 9"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/10.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 10"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/11.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 11"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/12.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 12"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-parcela-en-frutillar-cod-a104/13.webp",
+        "alt": "Arriendo casa en parcela, Frutillar — foto 13"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  },
+  {
+    "slug": "arriendo-casa-en-panitao-puerto-montt-cod-a103",
+    "codigo": "A-103",
+    "titulo": "Casa en arriendo Sector Panitao, Puerto Montt",
+    "operacion": "arriendo",
+    "tipo": "casa",
+    "comuna": "Panitao, Puerto Montt",
+    "precio_clp": 500000,
+    "precio_uf": "",
+    "superficie_construida_m2": 92,
+    "superficie_terreno_m2": 176,
+    "dormitorios": 3,
+    "banos": 2,
+    "estacionamientos": 2,
+    "amenities": [
+      {
+        "texto": "Luz"
+      },
+      {
+        "texto": "Agua"
+      },
+      {
+        "texto": "Internet"
+      },
+      {
+        "texto": "Combustión lenta"
+      },
+      {
+        "texto": "Aire acondicionado"
+      },
+      {
+        "texto": "Walk-in closet"
+      },
+      {
+        "texto": "Baño en suite"
+      },
+      {
+        "texto": "Aceptan mascotas"
+      }
+    ],
+    "descripcion": "Esta propiedad de 92 m² construidos se emplaza en un terreno de 176 m², ofreciendo amplitud y comodidad. Está ubicada en una zona estratégica a solo 5 minutos de la Ruta 5 Sur, con excelentes vías de acceso tanto por la carretera como por la ruta Chinquihue, situándose además a 20 minutos del Aeropuerto El Tepual.",
+    "galeria": [
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/01.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 1"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/02.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 2"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/03.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 3"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/04.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 4"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/05.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 5"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/06.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 6"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/07.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 7"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/08.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 8"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/09.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 9"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/10.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 10"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/11.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 11"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/12.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 12"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/13.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 13"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/14.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 14"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/15.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 15"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/16.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 16"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/17.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 17"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/18.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 18"
+      },
+      {
+        "src": "/assets/propiedades/arriendo-casa-en-panitao-puerto-montt-cod-a103/19.webp",
+        "alt": "Casa en arriendo Sector Panitao, Puerto Montt — foto 19"
+      }
+    ],
+    "video_url": "",
+    "destacado": false,
+    "estado": "disponible"
+  }
+]

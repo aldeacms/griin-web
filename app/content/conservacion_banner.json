@@ -1,0 +1,10 @@
+{
+  "eyebrow": "Terreno en conservación",
+  "titulo": "Asegura un legado de preservación en la Patagonia costera",
+  "imagen": {
+    "src": "/assets/branding/destacada.jpg",
+    "alt": "Patagonia costera"
+  },
+  "cta_label": "Conoce más",
+  "cta_url": "/conservacion"
+}

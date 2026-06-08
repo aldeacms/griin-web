@@ -1,0 +1,228 @@
+---
+import type { Property } from '../types/griin';
+import { formatCLP, formatUF, formatM2, imgSrc, imgAlt } from '../lib/content';
+
+interface Props {
+  property: Property;
+  loading?: 'eager' | 'lazy';
+}
+
+const { property, loading = 'lazy' } = Astro.props;
+const p = property;
+
+const cover = p.galeria?.[0];
+const coverSrc = imgSrc(cover);
+const coverAlt = imgAlt(cover, p.titulo);
+
+const opLabel = p.operacion === 'venta' ? 'En venta' : 'En arriendo';
+const isArriendo = p.operacion === 'arriendo';
+const tipoLabel = p.tipo.charAt(0).toUpperCase() + p.tipo.slice(1);
+
+// Precio principal según operación: arriendo es mensual (CLP), venta muestra CLP + UF.
+const priceMain = formatCLP(p.precio_clp);
+const priceSub = isArriendo ? 'mensual' : formatUF(p.precio_uf);
+
+// Specs visibles: para casas/cabañas mostramos dormitorios/baños; para todo, superficie.
+const specs = [
+  p.dormitorios ? { icon: 'bed', label: `${p.dormitorios} dorm.` } : null,
+  p.banos ? { icon: 'bath', label: `${p.banos} baños` } : null,
+  p.superficie_terreno_m2
+    ? { icon: 'area', label: formatM2(p.superficie_terreno_m2) }
+    : p.superficie_construida_m2
+      ? { icon: 'area', label: formatM2(p.superficie_construida_m2) }
+      : null,
+].filter(Boolean) as { icon: string; label: string }[];
+
+const icons: Record<string, string> = {
+  bed: '<path d="M2 4v16M2 8h18a2 2 0 0 1 2 2v10M2 17h20M6 8v9"/>',
+  bath: '<path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-1-1C4.6 2.4 4 2 4 2M10 11H4a2 2 0 0 0-2 2v3a4 4 0 0 0 4 4h12a4 4 0 0 0 4-4v-3a2 2 0 0 0-2-2h-6M9 11V6"/>',
+  area: '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>',
+};
+---
+
+<article
+  class="property-card"
+  data-operacion={p.operacion}
+  data-tipo={p.tipo}
+  data-comuna={p.comuna}
+  data-estado={p.estado}
+>
+  <a class="property-card__link" href={`/propiedades/${p.slug}`}>
+    <div class="property-card__media">
+      {coverSrc && (
+        <img
+          class="property-card__img"
+          src={coverSrc}
+          alt={coverAlt}
+          loading={loading}
+          decoding="async"
+          width="640"
+          height="480"
+        />
+      )}
+      <span class="property-card__badge">{opLabel}</span>
+      {p.estado !== 'disponible' && (
+        <span class="property-card__status">{p.estado === 'reservada' ? 'Reservada' : 'Vendida'}</span>
+      )}
+    </div>
+
+    <div class="property-card__body">
+      <p class="property-card__meta">{tipoLabel} · {p.comuna}</p>
+      <h3 class="property-card__title">{p.titulo}</h3>
+
+      <p class="property-card__price">
+        <span class="property-card__price-main">{priceMain}</span>
+        {priceSub && <span class="property-card__price-sub">{priceSub}</span>}
+      </p>
+
+      {specs.length > 0 && (
+        <ul class="property-card__specs">
+          {specs.map((s) => (
+            <li class="property-card__spec">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" set:html={icons[s.icon]} />
+              <span>{s.label}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      <span class="property-card__cta">Ver propiedad
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .property-card {
+    container-type: inline-size;
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: clip;
+    box-shadow: var(--shadow-card);
+    transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  }
+  .property-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .property-card__link {
+    display: flex;
+    flex-direction: column;
+    block-size: 100%;
+  }
+  .property-card__media {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-surface-sunken);
+  }
+  .property-card__img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    transition: transform 600ms var(--ease-out);
+  }
+  .property-card:hover .property-card__img { transform: scale(1.05); }
+
+  .property-card__badge,
+  .property-card__status {
+    position: absolute;
+    inset-block-start: 0.85rem;
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.7rem;
+    border-radius: var(--radius-pill);
+  }
+  .property-card__badge {
+    inset-inline-start: 0.85rem;
+    background-color: var(--color-brand);
+    color: var(--color-on-brand);
+  }
+  .property-card__status {
+    inset-inline-end: 0.85rem;
+    background-color: var(--color-ink);
+    color: var(--color-on-brand);
+  }
+
+  .property-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    flex: 1;
+  }
+  .property-card__meta {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-brand-strong);
+  }
+  .property-card__title {
+    margin: 0;
+    font-size: 1.2rem;
+    line-height: 1.25;
+    color: var(--color-ink);
+  }
+  .property-card__price {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin: 0.4rem 0 0.2rem;
+  }
+  .property-card__price-main {
+    font-family: var(--font-heading);
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--color-ink);
+  }
+  .property-card__price-sub {
+    font-size: 0.9rem;
+    color: var(--color-ink-muted);
+  }
+  .property-card__specs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.1rem;
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding-block-start: 0.85rem;
+    border-block-start: 1px solid var(--color-border);
+  }
+  .property-card__spec {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--color-ink-soft);
+  }
+  .property-card__spec svg { color: var(--color-brand-strong); }
+
+  .property-card__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-block-start: auto;
+    padding-block-start: 1rem;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-brand-strong);
+  }
+  .property-card__cta svg { transition: transform var(--duration-base) var(--ease-out); }
+  .property-card:hover .property-card__cta svg { transform: translateX(3px); }
+
+  /* Layout horizontal cuando la card es ancha (componente portable). */
+  @container (min-width: 34rem) {
+    .property-card__link { flex-direction: row; }
+    .property-card__media { flex: 0 0 44%; aspect-ratio: auto; }
+    .property-card__body { padding: 1.75rem; }
+  }
+</style>

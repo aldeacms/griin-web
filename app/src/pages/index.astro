@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import PropertyGrid from '../components/PropertyGrid.astro';
+import ConservationBanner from '../components/ConservationBanner.astro';
+import FAQSection from '../components/FAQSection.astro';
+import { getDestacadas, getFeaturedProperties } from '../lib/content';
+
+const destacadas = await getDestacadas();
+const featured = await getFeaturedProperties(6);
+---
+
+<BaseLayout>
+  <Hero />
+
+  <section class="section" id="propiedades">
+    <div class="container">
+      <header class="section-head section-head--center">
+        <p class="eyebrow">Propiedades destacadas</p>
+        <h2 class="section-head__title">{destacadas.titulo}</h2>
+        <p class="section-head__lead">{destacadas.subtitulo}</p>
+      </header>
+
+      <PropertyGrid properties={featured} />
+
+      <div class="home-properties__more">
+        <a class="btn btn--ghost" href="/propiedades">Ver todas las propiedades</a>
+      </div>
+    </div>
+  </section>
+
+  <ConservationBanner />
+  <FAQSection />
+</BaseLayout>
+
+<style>
+  .home-properties__more {
+    display: flex;
+    justify-content: center;
+    margin-block-start: clamp(2rem, 4vw, 3rem);
+  }
+</style>

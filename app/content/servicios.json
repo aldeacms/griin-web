@@ -1,0 +1,25 @@
+{
+  "eyebrow": "Servicios",
+  "titulo": "Cómo te acompañamos",
+  "subtitulo": "Intermediación inmobiliaria integral en el sur de Chile.",
+  "items": [
+    {
+      "titulo": "Vende o arrienda con nosotros",
+      "descripcion": "Nos encargamos de la promoción, el filtrado de interesados y el acompañamiento en todo el proceso, para que obtengas mejores resultados con tranquilidad y respaldo profesional. Definimos el precio correcto según mercado y ubicación, precalificamos compradores y arrendatarios, y te asesoramos en cada etapa.",
+      "cta_label": "Quiero vender o arrendar",
+      "cta_url": "/contacto"
+    },
+    {
+      "titulo": "¿Vendes tu campo?",
+      "descripcion": "Conectamos a propietarios de predios en Villarrica, Pucón y Puerto Varas con compradores que valoran el territorio, el entorno y el potencial de cada propiedad. Trabajamos con terrenos subdivididos y aprobados por el SAG, con una propuesta formal de compra y un cierre acompañado de principio a fin.",
+      "cta_label": "Quiero una evaluación de mi predio",
+      "cta_url": "/contacto"
+    },
+    {
+      "titulo": "Traslado laboral",
+      "descripcion": "Asistencia especializada para profesionales que se trasladan a la Región de Los Lagos. Búsqueda 100% personalizada según tus necesidades reales, conocimiento local experto y alternativas realistas acordes al mercado. Menos tiempo buscando, más tiempo instalándote.",
+      "cta_label": "Me estoy trasladando",
+      "cta_url": "/contacto"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getConservacion, getConfig, imgSrc, imgAlt, renderProse } from '../lib/content';
+
+const config = await getConfig();
+const c = await getConservacion();
+const imgUrl = imgSrc(c.imagen);
+const imgAltText = imgAlt(c.imagen, c.titulo);
+const title = `${c.titulo} — ${config.marca.nombre}`;
+const description = 'Reserva privada en la Patagonia costera: selva valdiviana nativa, conservación y un legado de preservación.';
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="conservacion-hero">
+    <img class="conservacion-hero__bg" src={imgUrl} alt={imgAltText} fetchpriority="high" width="1920" height="1080" />
+    <div class="conservacion-hero__veil" aria-hidden="true"></div>
+    <div class="container conservacion-hero__inner">
+      <p class="eyebrow conservacion-hero__eyebrow">{c.eyebrow}</p>
+      <h1 class="conservacion-hero__title">{c.titulo}</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container conservacion__body">
+      <div class="prose" set:html={renderProse(c.cuerpo)} />
+      <a class="btn btn--primary conservacion__cta" href={c.cta_url}>{c.cta_label}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .conservacion-hero {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-block-size: min(60vh, 32rem);
+    padding-block: clamp(3rem, 8vw, 6rem);
+    overflow: hidden;
+    isolation: isolate;
+    color: var(--color-on-brand);
+  }
+  .conservacion-hero__bg { position: absolute; inset: 0; z-index: -2; inline-size: 100%; block-size: 100%; object-fit: cover; }
+  .conservacion-hero__veil {
+    position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(0deg, rgb(4 28 16 / 0.8) 5%, rgb(4 28 16 / 0.2) 100%);
+  }
+  .conservacion-hero__inner { display: flex; flex-direction: column; gap: 1rem; max-width: 46rem; }
+  .conservacion-hero__eyebrow { color: color-mix(in srgb, var(--color-brand) 70%, white); }
+  .conservacion-hero__eyebrow::before { background-color: var(--color-brand); }
+  .conservacion-hero__title { font-size: var(--text-display); color: var(--color-on-brand); margin: 0; }
+
+  .conservacion__body { display: flex; flex-direction: column; gap: 2rem; align-items: flex-start; }
+  .conservacion__cta { align-self: flex-start; }
+</style>

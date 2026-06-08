@@ -1,0 +1,114 @@
+---
+import { getFaq, imgSrc, imgAlt } from '../lib/content';
+
+const faq = await getFaq();
+const ctaSrc = imgSrc(faq.cta_imagen);
+const ctaAlt = imgAlt(faq.cta_imagen, faq.cta_titulo);
+---
+
+<section class="faq section section--sunken">
+  <div class="container faq__grid">
+    <div class="faq__main">
+      <header class="section-head">
+        <p class="eyebrow">{faq.eyebrow}</p>
+        <h2 class="section-head__title">{faq.titulo}</h2>
+      </header>
+
+      <div class="faq__list">
+        {faq.items.map((item, i) => (
+          <details class="faq__item" open={i === 0}>
+            <summary class="faq__question">
+              <span>{item.pregunta}</span>
+              <svg class="faq__chevron" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <p class="faq__answer">{item.respuesta}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+
+    <aside class="faq__cta">
+      <img class="faq__cta-bg" src={ctaSrc} alt={ctaAlt} loading="lazy" width="640" height="800" />
+      <div class="faq__cta-veil" aria-hidden="true"></div>
+      <div class="faq__cta-content">
+        <h2 class="faq__cta-title">{faq.cta_titulo}</h2>
+        <a class="btn btn--primary faq__cta-btn" href={faq.cta_url}>Conversemos</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .faq__grid {
+    display: grid;
+    gap: clamp(2rem, 4vw, 3.5rem);
+    grid-template-columns: 1fr;
+  }
+  .faq__list { display: flex; flex-direction: column; gap: 0.75rem; }
+
+  .faq__item {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .faq__question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.35rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--color-ink);
+  }
+  .faq__question::-webkit-details-marker { display: none; }
+  .faq__chevron {
+    flex: 0 0 auto;
+    color: var(--color-brand-strong);
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+  .faq__item[open] .faq__chevron { transform: rotate(180deg); }
+  .faq__answer {
+    margin: 0;
+    padding: 0 1.35rem 1.35rem;
+    color: var(--color-ink-soft);
+    line-height: 1.7;
+  }
+
+  .faq__cta {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-block-size: 24rem;
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+    border-radius: var(--radius-xl);
+    overflow: clip;
+    isolation: isolate;
+    color: var(--color-on-brand);
+  }
+  .faq__cta-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+  .faq__cta-veil {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, rgb(4 28 16 / 0.85) 10%, rgb(4 28 16 / 0.15) 100%);
+  }
+  .faq__cta-content { display: flex; flex-direction: column; gap: 1.25rem; }
+  .faq__cta-title { font-size: var(--text-subtitle); color: var(--color-on-brand); margin: 0; }
+  .faq__cta-btn { align-self: flex-start; }
+
+  @media (min-width: 60rem) {
+    .faq__grid { grid-template-columns: 1.6fr 1fr; align-items: start; }
+  }
+</style>

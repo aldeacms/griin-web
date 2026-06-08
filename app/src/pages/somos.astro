@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { getSomos, getConfig, mdInline } from '../lib/content';
+
+const config = await getConfig();
+const somos = await getSomos();
+
+// Mapeo letra → ícono de valor (g/r/i/n). Las dos "I" comparten valor-i.png.
+const iconByLetter: Record<string, string> = {
+  G: '/assets/branding/valor-g.png',
+  R: '/assets/branding/valor-r.png',
+  I: '/assets/branding/valor-i.png',
+  N: '/assets/branding/valor-n.png',
+};
+
+const title = `Somos — ${config.marca.nombre}`;
+---
+
+<BaseLayout title={title} description={somos.intro.replace(/\*/g, '')}>
+  <PageHero eyebrow={somos.eyebrow} title={somos.titulo} />
+
+  <section class="section">
+    <div class="container somos__intro-wrap">
+      <p class="somos__intro" set:html={mdInline(somos.intro)} />
+    </div>
+  </section>
+
+  <section class="section section--sunken">
+    <div class="container">
+      <header class="section-head section-head--center">
+        <p class="eyebrow">Nuestros pilares</p>
+        <h2 class="section-head__title">Qué significa Griin</h2>
+      </header>
+
+      <ul class="somos__valores" role="list">
+        {somos.valores.map((v) => (
+          <li class="somos__valor">
+            <img class="somos__valor-icon" src={iconByLetter[v.letra] ?? iconByLetter.G} alt="" width="56" height="56" loading="lazy" />
+            <h3 class="somos__valor-name">{v.nombre}</h3>
+            <p class="somos__valor-desc">{v.descripcion}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .somos__intro-wrap { max-width: 50rem; }
+  .somos__intro {
+    font-size: var(--text-lead);
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+    margin: 0;
+  }
+  .somos__intro :global(strong) { color: var(--color-ink); font-weight: 600; }
+
+  .somos__valores {
+    display: grid;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .somos__valor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 2rem 1.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+  .somos__valor-icon { inline-size: 3.5rem; block-size: 3.5rem; object-fit: contain; }
+  .somos__valor-name { font-size: 1.2rem; margin: 0; }
+  .somos__valor-desc { margin: 0; color: var(--color-ink-soft); font-size: 0.95rem; line-height: 1.6; }
+</style>

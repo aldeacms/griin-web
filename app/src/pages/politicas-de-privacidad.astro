@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { getPrivacidad, getConfig, renderProse } from '../lib/content';
+
+const config = await getConfig();
+const priv = await getPrivacidad();
+const title = `${priv.titulo} — ${config.marca.nombre}`;
+---
+
+<BaseLayout title={title} description="Política de privacidad de Griin: cómo recogemos, usamos y protegemos tus datos.">
+  <PageHero title={priv.titulo} lead={`Última actualización: ${priv.actualizado}`} />
+
+  <section class="section">
+    <div class="container">
+      <div class="prose" set:html={renderProse(priv.cuerpo)} />
+    </div>
+  </section>
+</BaseLayout>

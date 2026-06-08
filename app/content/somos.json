@@ -1,0 +1,32 @@
+{
+  "eyebrow": "Somos",
+  "titulo": "Construimos confianza en cada proceso",
+  "intro": "Somos una corredora dedicada a la intermediación inmobiliaria en la zona de Frutillar y sus alrededores. Nuestro nombre representa los pilares bajo los cuales operamos: **Gestión, Respaldo, Inversión, Integridad y Naturaleza**.",
+  "valores": [
+    {
+      "letra": "G",
+      "nombre": "Gestión",
+      "descripcion": "Acompañamos cada proceso con orden, claridad y profesionalismo."
+    },
+    {
+      "letra": "R",
+      "nombre": "Respaldo",
+      "descripcion": "Estamos presentes en cada etapa, entregando confianza y seguridad."
+    },
+    {
+      "letra": "I",
+      "nombre": "Inversión",
+      "descripcion": "Te ayudamos a tomar decisiones inteligentes y con proyección."
+    },
+    {
+      "letra": "I",
+      "nombre": "Integridad",
+      "descripcion": "Actuamos con transparencia, honestidad y compromiso real."
+    },
+    {
+      "letra": "N",
+      "nombre": "Naturaleza",
+      "descripcion": "Creemos en espacios que conectan con el entorno y mejoran la calidad de vida."
+    }
+  ]
+}

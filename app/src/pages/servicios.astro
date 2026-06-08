@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { getServicios, getConfig } from '../lib/content';
+
+const config = await getConfig();
+const servicios = await getServicios();
+const title = `Servicios — ${config.marca.nombre}`;
+---
+
+<BaseLayout title={title} description={servicios.subtitulo}>
+  <PageHero eyebrow={servicios.eyebrow} title={servicios.titulo} lead={servicios.subtitulo} />
+
+  <section class="section">
+    <div class="container">
+      <ul class="servicios" role="list">
+        {servicios.items.map((item, i) => (
+          <li class="servicios__item">
+            <span class="servicios__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div class="servicios__body">
+              <h2 class="servicios__title">{item.titulo}</h2>
+              <p class="servicios__desc">{item.descripcion}</p>
+              <a class="btn btn--ghost servicios__cta" href={item.cta_url}>{item.cta_label}</a>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .servicios {
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .servicios__item {
+    display: grid;
+    gap: 1rem 1.5rem;
+    grid-template-columns: 1fr;
+    align-items: start;
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+  }
+  .servicios__num {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--color-brand-soft);
+    -webkit-text-stroke: 1px var(--color-brand);
+  }
+  .servicios__body { display: flex; flex-direction: column; gap: 0.85rem; align-items: flex-start; }
+  .servicios__title { font-size: var(--text-subtitle); margin: 0; }
+  .servicios__desc { margin: 0; color: var(--color-ink-soft); line-height: 1.75; }
+  .servicios__cta { margin-block-start: 0.25rem; }
+
+  @media (min-width: 48rem) {
+    .servicios__item { grid-template-columns: auto 1fr; }
+  }
+</style>

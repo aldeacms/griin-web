@@ -1,0 +1,40 @@
+{
+  "eyebrow": "Preguntas frecuentes",
+  "titulo": "Todo lo que necesitas saber antes de comenzar",
+  "items": [
+    {
+      "pregunta": "¿Qué tipo de propiedades ofrece Griin?",
+      "respuesta": "En Griin trabajamos con todo tipo de propiedades. Actualmente, nuestro enfoque principal está en la venta de parcelas y terrenos de conservación."
+    },
+    {
+      "pregunta": "¿Cómo puedo agendar una visita a una propiedad?",
+      "respuesta": "Puedes escribirnos directamente a nuestro WhatsApp +56 9 5213 2014 o al correo info@griin.cl."
+    },
+    {
+      "pregunta": "¿Griin cobra comisión por compra, venta o arriendo?",
+      "respuesta": "Sí. En la venta de casas o parcelas cobramos una comisión del 2% del valor de la venta, tanto al comprador como al vendedor. En el caso de arriendos de casas o departamentos, la comisión corresponde al 50% del valor del arriendo."
+    },
+    {
+      "pregunta": "¿Pueden ayudarme a tasar mi propiedad?",
+      "respuesta": "Por el momento, no ofrecemos servicio de tasación."
+    },
+    {
+      "pregunta": "¿Cómo puedo publicar mi propiedad con ustedes?",
+      "respuesta": "Solo debes escribirnos al WhatsApp +56 9 5213 2014 o enviarnos un correo a info@griin.cl, y te guiaremos en el proceso."
+    },
+    {
+      "pregunta": "¿Las propiedades publicadas están disponibles de inmediato?",
+      "respuesta": "Sí, todas las propiedades que publicamos están disponibles."
+    },
+    {
+      "pregunta": "¿Griin trabaja con contratos exclusivos?",
+      "respuesta": "No, nuestros contratos no requieren exclusividad."
+    }
+  ],
+  "cta_titulo": "¿Vendes tu campo?",
+  "cta_imagen": {
+    "src": "/assets/branding/destacada.jpg",
+    "alt": "Vende tu campo con Griin"
+  },
+  "cta_url": "/servicios"
+}

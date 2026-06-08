@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import PropertyGrid from '../../components/PropertyGrid.astro';
+import { getConfig, getProperties } from '../../lib/content';
+
+const config = await getConfig();
+const all = await getProperties();
+const ventas = all.filter((p) => p.operacion === 'venta');
+const arriendos = all.filter((p) => p.operacion === 'arriendo');
+
+const title = `Propiedades en venta y arriendo — ${config.marca.nombre}`;
+const description =
+  'Parcelas, casas y cabañas en Frutillar, Llanquihue, Puerto Varas y el sur de Chile. Encuentra tu próxima propiedad con Griin.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero
+    eyebrow="Catálogo"
+    title="Propiedades"
+    lead="Explora nuestras propiedades disponibles en el sur de Chile."
+  />
+
+  <div class="listing">
+    {ventas.length > 0 && (
+      <section class="section listing__section">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow">En venta</p>
+            <h2 class="section-head__title">Parcelas y casas en venta</h2>
+            <p class="section-head__lead">{ventas.length} propiedades disponibles.</p>
+          </header>
+          <PropertyGrid properties={ventas} />
+        </div>
+      </section>
+    )}
+
+    {arriendos.length > 0 && (
+      <section class="section listing__section section--sunken">
+        <div class="container">
+          <header class="section-head">
+            <p class="eyebrow">En arriendo</p>
+            <h2 class="section-head__title">Casas y cabañas en arriendo</h2>
+            <p class="section-head__lead">{arriendos.length} propiedades disponibles.</p>
+          </header>
+          <PropertyGrid properties={arriendos} />
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>

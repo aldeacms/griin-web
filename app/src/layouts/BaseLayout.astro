@@ -1,0 +1,160 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { getConfig, imgSrc } from '../lib/content';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const config = await getConfig();
+const { seo, marca, jsonld, contacto, analytics } = config;
+
+const {
+  title = seo.title,
+  description = seo.description,
+  canonical = Astro.url.href,
+  ogImage,
+} = Astro.props;
+
+const siteBase = Astro.site ?? new URL('https://griin.cl');
+const ogUrl = new URL(ogImage ?? imgSrc(seo.og_image) ?? '/assets/branding/destacada.jpg', siteBase).toString();
+
+// ── Analítica / tags — editables desde el CMS (config.analytics) ──
+// Hoy vienen vacíos → no inyecta nada. El código queda listo para el cableado.
+const gtmId = analytics.gtm_id ?? '';
+const googleAdsId = analytics.google_ads_id ?? '';
+const plausibleDomain = analytics.plausible_domain ?? '';
+const customScripts = (analytics.custom_scripts ?? []).filter((s) => s && s.enabled !== false && s.code);
+const headScripts = customScripts.filter((s) => s.placement !== 'body-end');
+const bodyScripts = customScripts.filter((s) => s.placement === 'body-end');
+
+// Conversiones: evento → { ads_label, plausible_goal }. La capa client-side
+// dispara la conversión de Google Ads (gtag) y/o el goal de Plausible (sin GTM).
+const conversions = (analytics.conversions ?? []).reduce(
+  (m, r) => {
+    if (r && r.evento) m[r.evento] = { ads_label: r.ads_label ?? '', plausible_goal: r.plausible_goal ?? '' };
+    return m;
+  },
+  {} as Record<string, { ads_label: string; plausible_goal: string }>,
+);
+const hasConversions = Object.keys(conversions).length > 0;
+
+// ── Datos estructurados: RealEstateAgent ──
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'RealEstateAgent',
+  name: marca.nombre,
+  url: siteBase.toString(),
+  description: seo.description,
+  image: ogUrl,
+  telephone: contacto.telefono_e164,
+  email: contacto.email,
+  areaServed: { '@type': 'AdministrativeArea', name: jsonld.area_servida },
+  knowsAbout: jsonld.zonas.map((z) => z.texto),
+  sameAs: config.redes.map((r) => r.url),
+};
+---
+
+<!doctype html>
+<html lang="es-CL">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <meta name="theme-color" content="#00a643" />
+    <meta name="description" content={description} />
+
+    <title>{title}</title>
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/jpeg" href="/assets/branding/favicon.jpg" />
+    <link rel="apple-touch-icon" href="/assets/branding/favicon.jpg" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content={seo.site_name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    {/* ── Analítica / tags — editables desde el CMS (config.analytics) ── */}
+    {plausibleDomain && (
+      <script is:inline>
+        window.plausible = window.plausible || function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}
+      </script>
+    )}
+    {plausibleDomain && (
+      <script defer data-domain={plausibleDomain} src="https://analytics.lifefocus.agency/js/script.js"></script>
+    )}
+    {gtmId && (
+      <script is:inline define:vars={{ gtmId }}>
+        {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',gtmId);`}
+      </script>
+    )}
+    {googleAdsId && (
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}></script>
+    )}
+    {googleAdsId && (
+      <script is:inline define:vars={{ googleAdsId }}>
+        {`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', googleAdsId);`}
+      </script>
+    )}
+    {hasConversions && (
+      <script is:inline define:vars={{ googleAdsId, conversions }}>
+        (function(){
+          function fire(ev){
+            var c = conversions[ev]; if(!c) return;
+            if(c.ads_label && googleAdsId && typeof window.gtag === 'function'){
+              window.gtag('event','conversion',{send_to: googleAdsId + '/' + c.ads_label});
+            }
+            if(c.plausible_goal && typeof window.plausible === 'function'){
+              window.plausible(c.plausible_goal);
+            }
+          }
+          window.focusTrack = fire;
+          document.addEventListener('click', function(e){
+            var a = e.target && e.target.closest ? e.target.closest('a[href]') : null;
+            if(!a) return;
+            var href = a.getAttribute('href') || '';
+            if(href.indexOf('tel:') === 0) fire('phone_click');
+            else if(/wa\.me|api\.whatsapp\.com\/send|^whatsapp:/.test(href)) fire('whatsapp_click');
+          }, true);
+        })();
+      </script>
+    )}
+    {headScripts.map((s) => (
+      <Fragment set:html={s.code} />
+    ))}
+  </head>
+  <body>
+    {gtmId && (
+      <noscript set:html={`<iframe src="https://www.googletagmanager.com/ns.html?id=${gtmId}" height="0" width="0" style="display:none;visibility:hidden"></iframe>`} />
+    )}
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <Header />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+    <FloatingWhatsApp />
+    {bodyScripts.map((s) => (
+      <Fragment set:html={s.code} />
+    ))}
+  </body>
+</html>

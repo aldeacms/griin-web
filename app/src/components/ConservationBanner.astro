@@ -1,0 +1,63 @@
+---
+import { getConservacionBanner, imgSrc, imgAlt } from '../lib/content';
+
+const banner = await getConservacionBanner();
+const bgSrc = imgSrc(banner.imagen);
+const bgAlt = imgAlt(banner.imagen, banner.titulo);
+---
+
+<section class="conservation-banner section">
+  <div class="container">
+    <article class="conservation-banner__card">
+      <img class="conservation-banner__bg" src={bgSrc} alt={bgAlt} loading="lazy" width="1600" height="800" />
+      <div class="conservation-banner__veil" aria-hidden="true"></div>
+      <div class="conservation-banner__content">
+        <p class="eyebrow conservation-banner__eyebrow">{banner.eyebrow}</p>
+        <h2 class="conservation-banner__title">{banner.titulo}</h2>
+        <a class="btn btn--light conservation-banner__cta" href={banner.cta_url}>{banner.cta_label}</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<style>
+  .conservation-banner__card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-block-size: 22rem;
+    padding: clamp(2.5rem, 6vw, 5rem);
+    border-radius: var(--radius-xl);
+    overflow: clip;
+    isolation: isolate;
+    color: var(--color-on-brand);
+  }
+  .conservation-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+  }
+  .conservation-banner__veil {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(90deg, rgb(4 28 16 / 0.78) 0%, rgb(4 28 16 / 0.4) 100%);
+  }
+  .conservation-banner__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    max-width: 38rem;
+  }
+  .conservation-banner__eyebrow { color: color-mix(in srgb, var(--color-brand) 70%, white); }
+  .conservation-banner__eyebrow::before { background-color: var(--color-brand); }
+  .conservation-banner__title {
+    font-size: var(--text-title);
+    color: var(--color-on-brand);
+    margin: 0;
+  }
+</style>

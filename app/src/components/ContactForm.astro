@@ -1,0 +1,139 @@
+---
+import { getContacto } from '../lib/content';
+
+interface Props {
+  /** Asunto/contexto precargado (ej. el código de la propiedad). */
+  asunto?: string;
+  /** Mensaje por defecto en el textarea. */
+  mensaje?: string;
+  compact?: boolean;
+}
+
+const { asunto, mensaje = '', compact = false } = Astro.props;
+const contacto = await getContacto();
+---
+
+<form
+  class:list={['contact-form', compact && 'contact-form--compact']}
+  data-griin-form
+  data-success={contacto.form_success}
+  novalidate
+>
+  <input type="text" name="_hp" tabindex="-1" autocomplete="off" class="visually-hidden" aria-hidden="true" />
+  {asunto && <input type="hidden" name="asunto" value={asunto} />}
+
+  <div class="contact-form__row">
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-nombre">Nombre</label>
+      <input class="contact-form__input" id="cf-nombre" name="first_name" type="text" autocomplete="name" required />
+    </div>
+    <div class="contact-form__field">
+      <label class="contact-form__label" for="cf-telefono">Teléfono</label>
+      <input class="contact-form__input" id="cf-telefono" name="phone" type="tel" inputmode="tel" autocomplete="tel" />
+    </div>
+  </div>
+
+  <div class="contact-form__field">
+    <label class="contact-form__label" for="cf-email">Correo</label>
+    <input class="contact-form__input" id="cf-email" name="email" type="email" autocomplete="email" required />
+  </div>
+
+  <div class="contact-form__field">
+    <label class="contact-form__label" for="cf-mensaje">Mensaje</label>
+    <textarea class="contact-form__input contact-form__textarea" id="cf-mensaje" name="message" rows={compact ? 3 : 5} required>{mensaje}</textarea>
+  </div>
+
+  <button class="btn btn--primary contact-form__submit" type="submit">{contacto.form_boton}</button>
+  <p class="contact-form__status" data-form-status role="status" aria-live="polite" hidden></p>
+</form>
+
+<script>
+  // Envía el formulario al endpoint público del Sistema Focus.
+  const FORM_ENDPOINT = 'https://api.lifefocus.agency/api/forms/submit/griin-contacto';
+  const FORM_KEY = 'gr_5f3a9c1e7b2d4068a1c9e0b8d7f64253';
+
+  document.querySelectorAll<HTMLFormElement>('[data-griin-form]').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('[data-form-status]');
+    const okMsg = form.dataset.success || '¡Gracias! Te contactaremos a la brevedad.';
+    const show = (msg: string, ok: boolean) => {
+      if (!status) return;
+      status.hidden = false;
+      status.textContent = msg;
+      status.dataset.ok = ok ? '1' : '0';
+    };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      if (fd.get('_hp')) return; // honeypot relleno = bot
+      const payload: Record<string, string> = {};
+      fd.forEach((v, k) => { if (k !== '_hp') payload[k] = String(v); });
+      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]');
+      if (btn) btn.disabled = true;
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Focus-Form-Key': FORM_KEY },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('status ' + res.status);
+        show(okMsg, true);
+        form.reset();
+        const w = window as unknown as { focusTrack?: (ev: string) => void };
+        if (typeof w.focusTrack === 'function') w.focusTrack('form_submit');
+      } catch {
+        show('No pudimos enviar tu consulta. Intenta nuevamente o escríbenos por WhatsApp.', false);
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .contact-form__row {
+    display: grid;
+    gap: 1.1rem;
+    grid-template-columns: 1fr;
+  }
+  .contact-form__field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .contact-form__label {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+  }
+  .contact-form__input {
+    font: inherit;
+    color: var(--color-ink);
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  }
+  .contact-form__input:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px var(--color-brand-soft);
+  }
+  .contact-form__textarea { resize: vertical; min-block-size: 6rem; }
+  .contact-form__submit { align-self: flex-start; margin-block-start: 0.25rem; }
+  .contact-form__status {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--radius-md);
+  }
+  .contact-form__status[data-ok='1'] { color: #166534; background-color: #dcfce7; }
+  .contact-form__status[data-ok='0'] { color: #b91c1c; background-color: #fee2e2; }
+
+  @media (min-width: 32rem) {
+    .contact-form__row { grid-template-columns: 1fr 1fr; }
+  }
+</style>

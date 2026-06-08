@@ -1,0 +1,92 @@
+{
+  "marca": {
+    "nombre": "Griin",
+    "tagline": "Tu próximo hogar es Griin"
+  },
+  "contacto": {
+    "email": "info@griin.cl",
+    "telefono_display": "+56 9 5213 2014",
+    "telefono_e164": "+56952132014",
+    "direccion": "Villarrica · Pucón · Puerto Varas"
+  },
+  "whatsapp": {
+    "numero": "56952132014",
+    "mensaje_default": "Hola, estoy visitando griin.cl y quiero más información."
+  },
+  "nav": [
+    {
+      "label": "Inicio",
+      "url": "/"
+    },
+    {
+      "label": "Propiedades",
+      "url": "/propiedades"
+    },
+    {
+      "label": "Servicios",
+      "url": "/servicios"
+    },
+    {
+      "label": "Somos",
+      "url": "/somos"
+    },
+    {
+      "label": "Contacto",
+      "url": "/contacto"
+    }
+  ],
+  "redes": [
+    {
+      "red": "instagram",
+      "url": "https://www.instagram.com/griinpropiedades/"
+    }
+  ],
+  "footer": {
+    "descripcion": "Corredora dedicada a la intermediación inmobiliaria en Frutillar y sus alrededores. Gestión, Respaldo, Inversión, Integridad y Naturaleza.",
+    "bottom_links": [
+      {
+        "label": "Políticas de Privacidad",
+        "url": "/politicas-de-privacidad"
+      }
+    ]
+  },
+  "seo": {
+    "title": "Griin — Propiedades en el sur de Chile",
+    "description": "Tu próximo hogar es Griin. Vive rodeado de la naturaleza que solo el sur de Chile te puede entregar. Propiedades en Frutillar, Llanquihue, Puerto Varas y Puerto Montt.",
+    "site_name": "Griin",
+    "og_image": {
+      "src": "/assets/branding/destacada.jpg",
+      "alt": "Griin — Propiedades en el sur de Chile"
+    }
+  },
+  "jsonld": {
+    "area_servida": "Región de Los Lagos, Chile",
+    "zonas": [
+      {
+        "texto": "Frutillar"
+      },
+      {
+        "texto": "Llanquihue"
+      },
+      {
+        "texto": "Puerto Varas"
+      },
+      {
+        "texto": "Puerto Montt"
+      },
+      {
+        "texto": "Villarrica"
+      },
+      {
+        "texto": "Pucón"
+      }
+    ]
+  },
+  "analytics": {
+    "gtm_id": "",
+    "google_ads_id": "",
+    "plausible_domain": "",
+    "conversions": [],
+    "custom_scripts": []
+  }
+}
