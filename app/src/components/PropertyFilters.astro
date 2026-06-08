@@ -1,0 +1,226 @@
+---
+import type { Property } from '../types/griin';
+import { tipoLabel } from '../lib/property-labels';
+
+interface Props {
+  properties: Property[];
+}
+
+const { properties } = Astro.props;
+const total = properties.length;
+
+// Comunas presentes (únicas, trimmeadas, ordenadas alfabéticamente es-CL).
+const comunas = [...new Set(properties.map((p) => p.comuna?.trim()).filter(Boolean) as string[])]
+  .sort((a, b) => a.localeCompare(b, 'es-CL'));
+
+// Tipos presentes (únicos), con su etiqueta legible, ordenados por etiqueta.
+const tipos = [...new Set(properties.map((p) => p.tipo).filter(Boolean))]
+  .map((t) => ({ value: t, label: tipoLabel(t) }))
+  .sort((a, b) => a.label.localeCompare(b.label, 'es-CL'));
+---
+
+<form class="filters" data-filters role="search" aria-label="Filtrar propiedades">
+  <div class="filters__search">
+    <span class="filters__search-icon" aria-hidden="true">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+    </span>
+    <input
+      class="filters__search-input"
+      type="search"
+      name="q"
+      data-filter-q
+      placeholder="Busca por nombre, dirección, código o comuna"
+      aria-label="Buscar propiedades"
+    />
+  </div>
+
+  <div class="filters__row">
+    <fieldset class="filters__seg">
+      <legend class="filters__legend">Operación</legend>
+      <div class="filters__seg-group" role="group" aria-label="Operación">
+        <label class="filters__seg-opt">
+          <input type="radio" name="op" value="" checked data-filter-op />
+          <span>Todas</span>
+        </label>
+        <label class="filters__seg-opt">
+          <input type="radio" name="op" value="venta" data-filter-op />
+          <span>Venta</span>
+        </label>
+        <label class="filters__seg-opt">
+          <input type="radio" name="op" value="arriendo" data-filter-op />
+          <span>Arriendo</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="filters__field">
+      <label class="filters__label" for="filter-comuna">Comuna</label>
+      <select class="filters__select" id="filter-comuna" name="comuna" data-filter-comuna>
+        <option value="">Todas las comunas</option>
+        {comunas.map((c) => <option value={c}>{c}</option>)}
+      </select>
+    </div>
+
+    <div class="filters__field">
+      <label class="filters__label" for="filter-tipo">Tipo</label>
+      <select class="filters__select" id="filter-tipo" name="tipo" data-filter-tipo>
+        <option value="">Todos los tipos</option>
+        {tipos.map((t) => <option value={t.value}>{t.label}</option>)}
+      </select>
+    </div>
+  </div>
+
+  <div class="filters__foot">
+    <p class="filters__count" aria-live="polite" data-filter-count>
+      <strong data-filter-shown>{total}</strong> de <span data-filter-total>{total}</span> propiedades
+    </p>
+    <button class="filters__reset" type="button" data-filter-reset hidden>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+      Limpiar filtros
+    </button>
+  </div>
+</form>
+
+<style>
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: clamp(1.1rem, 3vw, 1.5rem);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+
+  .filters__search {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-inline: 0.85rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface);
+    transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  }
+  .filters__search:focus-within {
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px var(--color-brand-soft);
+  }
+  .filters__search-icon { display: inline-flex; color: var(--color-brand-strong); }
+  .filters__search-input {
+    flex: 1;
+    min-inline-size: 0;
+    border: 0;
+    background: transparent;
+    padding-block: 0.7rem;
+    font: inherit;
+    color: var(--color-ink);
+  }
+  .filters__search-input::placeholder { color: var(--color-ink-muted); }
+  .filters__search-input:focus { outline: none; }
+
+  .filters__row {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    align-items: end;
+  }
+
+  .filters__seg { border: 0; padding: 0; margin: 0; }
+  .filters__legend,
+  .filters__label {
+    font-family: var(--font-heading);
+    display: block;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+    margin-block-end: 0.4rem;
+    padding: 0;
+  }
+  .filters__seg-group {
+    display: inline-flex;
+    padding: 0.25rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    background-color: var(--color-surface-sunken);
+  }
+  .filters__seg-opt {
+    position: relative;
+    display: inline-flex;
+  }
+  .filters__seg-opt input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .filters__seg-opt span {
+    font-family: var(--font-heading);
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+    border-radius: var(--radius-pill);
+    transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+  }
+  .filters__seg-opt input:checked + span {
+    background-color: var(--color-brand);
+    color: var(--color-on-brand);
+  }
+  .filters__seg-opt input:focus-visible + span {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+
+  .filters__select {
+    inline-size: 100%;
+    font: inherit;
+    color: var(--color-ink);
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    cursor: pointer;
+  }
+  .filters__select:focus-visible {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px var(--color-brand-soft);
+  }
+
+  .filters__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  .filters__count { margin: 0; font-size: 0.95rem; color: var(--color-ink-soft); }
+  .filters__count strong { color: var(--color-ink); }
+  .filters__reset {
+    font-family: var(--font-heading);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-brand-strong);
+    background-color: transparent;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: border-color var(--duration-base) var(--ease-out), background-color var(--duration-base) var(--ease-out);
+  }
+  .filters__reset:hover { border-color: var(--color-brand); background-color: var(--color-brand-soft); }
+  .filters__reset:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+
+  @container (min-width: 44rem) {
+    .filters { container-type: inline-size; }
+  }
+  .filters { container-type: inline-size; }
+  @container (min-width: 46rem) {
+    .filters__row { grid-template-columns: auto 1fr 1fr; }
+  }
+</style>

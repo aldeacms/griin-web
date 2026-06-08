@@ -1,0 +1,114 @@
+---
+import type { Property } from '../types/griin';
+
+interface Props {
+  property: Property;
+}
+
+const { property: p } = Astro.props;
+const hasCoords = typeof p.latitud === 'number' && typeof p.longitud === 'number';
+const direccion = p.direccion?.trim() ?? '';
+const comuna = p.comuna?.trim() ?? '';
+---
+
+{hasCoords && (
+  <section class="loc-map" aria-label="Ubicación de la propiedad">
+    <header class="loc-map__head">
+      <h2 class="loc-map__title">Ubicación</h2>
+      <p class="loc-map__address">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>{direccion ? `${direccion} · ${comuna}` : comuna}</span>
+      </p>
+    </header>
+    <div
+      class="loc-map__canvas"
+      data-loc-map
+      data-lat={p.latitud}
+      data-lng={p.longitud}
+      role="img"
+      aria-label={`Mapa con la ubicación aproximada de la propiedad en ${comuna}`}
+    ></div>
+  </section>
+)}
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  // Pin verde de marca como divIcon — evita el bug de íconos default de Leaflet con bundlers.
+  const PIN_SVG = `
+    <svg width="30" height="40" viewBox="0 0 30 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M15 0C6.7 0 0 6.7 0 15c0 10.5 15 25 15 25s15-14.5 15-25C30 6.7 23.3 0 15 0Z" fill="#00a643"/>
+      <circle cx="15" cy="15" r="6" fill="#ffffff"/>
+    </svg>`;
+
+  export const brandPin = () =>
+    L.divIcon({
+      className: 'griin-pin',
+      html: PIN_SVG,
+      iconSize: [30, 40],
+      iconAnchor: [15, 40],
+      popupAnchor: [0, -34],
+    });
+
+  document.querySelectorAll<HTMLElement>('[data-loc-map]').forEach((el) => {
+    const lat = Number(el.dataset.lat);
+    const lng = Number(el.dataset.lng);
+    if (!Number.isFinite(lat) || !Number.isFinite(lng)) return;
+
+    const map = L.map(el, {
+      center: [lat, lng],
+      zoom: 14,
+      scrollWheelZoom: false,
+      attributionControl: true,
+    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap',
+    }).addTo(map);
+    L.marker([lat, lng], { icon: brandPin() }).addTo(map);
+
+    // Reactiva el scroll-zoom solo cuando el mapa tiene foco/click (no roba el scroll de la página).
+    map.on('focus', () => map.scrollWheelZoom.enable());
+    map.on('blur', () => map.scrollWheelZoom.disable());
+  });
+</script>
+
+<style>
+  .loc-map {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    overflow: clip;
+    background-color: var(--color-surface);
+    box-shadow: var(--shadow-card);
+  }
+  .loc-map__head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: clamp(1.25rem, 3vw, 1.5rem);
+  }
+  .loc-map__title { font-size: 1.25rem; margin: 0; }
+  .loc-map__address {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    margin: 0;
+    color: var(--color-ink-soft);
+    font-size: 0.95rem;
+  }
+  .loc-map__address svg { flex: 0 0 auto; margin-block-start: 0.15rem; color: var(--color-brand-strong); }
+  .loc-map__canvas {
+    block-size: 360px;
+    inline-size: 100%;
+    background-color: var(--color-surface-sunken);
+  }
+  .loc-map__canvas:focus-visible { outline: 3px solid var(--color-focus-ring); outline-offset: -3px; }
+</style>
+
+<style is:global>
+  .griin-pin { background: none; border: 0; }
+  .griin-pin svg { filter: drop-shadow(0 3px 5px rgb(20 36 26 / 0.35)); }
+</style>

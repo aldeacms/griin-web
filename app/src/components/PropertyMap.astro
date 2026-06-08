@@ -1,0 +1,146 @@
+---
+import type { Property } from '../types/griin';
+import { tipoLabel } from '../lib/property-labels';
+import { formatCLP, formatUF, imgSrc } from '../lib/content';
+
+interface Props {
+  properties: Property[];
+}
+const { properties } = Astro.props;
+
+// Datos mínimos por marker (solo las que tienen coordenadas).
+const markers = properties
+  .filter((p) => typeof p.latitud === 'number' && typeof p.longitud === 'number')
+  .map((p) => ({
+    slug: p.slug,
+    lat: p.latitud,
+    lng: p.longitud,
+    titulo: p.titulo,
+    precio: p.operacion === 'arriendo'
+      ? `${formatCLP(p.precio_clp)}/mes`
+      : [formatCLP(p.precio_clp), formatUF(p.precio_uf)].filter(Boolean).join(' · '),
+    tipo: tipoLabel(p.tipo),
+    comuna: p.comuna,
+    foto: imgSrc(p.galeria?.[0]),
+    url: `/propiedades/${p.slug}`,
+  }));
+---
+
+<div class="property-map">
+  <div class="property-map__canvas" id="griin-map" role="application" aria-label="Mapa de propiedades"></div>
+  <script type="application/json" id="griin-map-data" set:html={JSON.stringify(markers)}></script>
+</div>
+
+<script>
+  import L from 'leaflet';
+  import 'leaflet/dist/leaflet.css';
+
+  type Marker = {
+    slug: string; lat: number; lng: number; titulo: string;
+    precio: string; tipo: string; comuna: string; foto: string; url: string;
+  };
+
+  const el = document.getElementById('griin-map');
+  const dataEl = document.getElementById('griin-map-data');
+  if (el && dataEl) {
+    const data: Marker[] = JSON.parse(dataEl.textContent || '[]');
+
+    const map = L.map(el, { scrollWheelZoom: false }).setView([-41.13, -73.05], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      maxZoom: 19,
+    }).addTo(map);
+
+    // Pin verde de marca (divIcon → evita el bug de íconos default con bundlers).
+    const pin = (n?: number) => L.divIcon({
+      className: 'griin-pin',
+      html: `<span class="griin-pin__dot">${n && n > 1 ? n : ''}</span>`,
+      iconSize: [26, 26],
+      iconAnchor: [13, 26],
+      popupAnchor: [0, -24],
+    });
+
+    const escape = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c] as string));
+    const popupHtml = (m: Marker) => `
+      <a class="griin-pop" href="${m.url}">
+        ${m.foto ? `<img class="griin-pop__img" src="${escape(m.foto)}" alt="" loading="lazy" />` : ''}
+        <span class="griin-pop__body">
+          <span class="griin-pop__title">${escape(m.titulo)}</span>
+          <span class="griin-pop__meta">${escape(m.tipo)} · ${escape(m.comuna)}</span>
+          <span class="griin-pop__price">${escape(m.precio)}</span>
+          <span class="griin-pop__cta">Ver propiedad →</span>
+        </span>
+      </a>`;
+
+    const layer = L.layerGroup().addTo(map);
+    const bySlug = new Map<string, L.Marker>();
+    for (const m of data) {
+      const mk = L.marker([m.lat, m.lng], { icon: pin() }).bindPopup(popupHtml(m), {
+        className: 'griin-pop-wrap', minWidth: 220, closeButton: true,
+      });
+      bySlug.set(m.slug, mk);
+    }
+
+    function fitTo(slugs: Set<string> | null) {
+      layer.clearLayers();
+      const pts: L.LatLngExpression[] = [];
+      for (const [slug, mk] of bySlug) {
+        if (!slugs || slugs.has(slug)) { mk.addTo(layer); pts.push(mk.getLatLng()); }
+      }
+      if (pts.length) map.fitBounds(L.latLngBounds(pts as L.LatLngTuple[]).pad(0.2), { maxZoom: 14 });
+    }
+    fitTo(null);
+
+    // Controlador global para que los filtros del listado sincronicen el mapa.
+    (window as unknown as { griinMap?: unknown }).griinMap = {
+      show(slugs: string[]) { fitTo(new Set(slugs)); },
+      refresh() { map.invalidateSize(); },
+    };
+  }
+</script>
+
+<style>
+  .property-map { position: relative; }
+  .property-map__canvas {
+    block-size: clamp(420px, 70vh, 680px);
+    inline-size: 100%;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  /* Pin de marca */
+  :global(.griin-pin__dot) {
+    display: grid;
+    place-items: center;
+    inline-size: 22px;
+    block-size: 22px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background-color: var(--color-brand);
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    color: #fff;
+    font: 700 0.7rem/1 var(--font-heading, sans-serif);
+  }
+  :global(.griin-pin__dot)::after {
+    content: '';
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.0;
+  }
+
+  /* Popup */
+  :global(.griin-pop-wrap .leaflet-popup-content) { margin: 0; }
+  :global(.griin-pop-wrap .leaflet-popup-content-wrapper) { border-radius: var(--radius-md); overflow: hidden; padding: 0; }
+  :global(.griin-pop) { display: block; text-decoration: none; color: var(--color-ink); inline-size: 220px; }
+  :global(.griin-pop__img) { inline-size: 100%; block-size: 120px; object-fit: cover; display: block; }
+  :global(.griin-pop__body) { display: block; padding: 0.65rem 0.8rem; }
+  :global(.griin-pop__title) { display: block; font-family: var(--font-heading); font-weight: 700; font-size: 0.9rem; line-height: 1.25; }
+  :global(.griin-pop__meta) { display: block; font-size: 0.78rem; color: var(--color-ink-muted); margin-block: 0.15rem; }
+  :global(.griin-pop__price) { display: block; font-weight: 700; color: var(--color-brand-strong); }
+  :global(.griin-pop__cta) { display: block; margin-block-start: 0.3rem; font-size: 0.8rem; font-weight: 600; color: var(--color-brand-strong); }
+</style>

@@ -2,16 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHero from '../../components/PageHero.astro';
 import PropertyGrid from '../../components/PropertyGrid.astro';
+import PropertyFilters from '../../components/PropertyFilters.astro';
+import PropertyMap from '../../components/PropertyMap.astro';
 import { getConfig, getProperties } from '../../lib/content';
 
 const config = await getConfig();
 const all = await getProperties();
-const ventas = all.filter((p) => p.operacion === 'venta');
-const arriendos = all.filter((p) => p.operacion === 'arriendo');
 
 const title = `Propiedades en venta y arriendo — ${config.marca.nombre}`;
 const description =
-  'Parcelas, casas y cabañas en Frutillar, Llanquihue, Puerto Varas y el sur de Chile. Encuentra tu próxima propiedad con Griin.';
+  'Parcelas, casas y cabañas en Frutillar, Llanquihue, Puerto Varas y el sur de Chile. Filtra por comuna, tipo y operación, o explora el mapa.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -21,31 +21,160 @@ const description =
     lead="Explora nuestras propiedades disponibles en el sur de Chile."
   />
 
-  <div class="listing">
-    {ventas.length > 0 && (
-      <section class="section listing__section">
-        <div class="container">
-          <header class="section-head">
-            <p class="eyebrow">En venta</p>
-            <h2 class="section-head__title">Parcelas y casas en venta</h2>
-            <p class="section-head__lead">{ventas.length} propiedades disponibles.</p>
-          </header>
-          <PropertyGrid properties={ventas} />
-        </div>
-      </section>
-    )}
+  <section class="section">
+    <div class="container listing">
+      <PropertyFilters properties={all} />
 
-    {arriendos.length > 0 && (
-      <section class="section listing__section section--sunken">
-        <div class="container">
-          <header class="section-head">
-            <p class="eyebrow">En arriendo</p>
-            <h2 class="section-head__title">Casas y cabañas en arriendo</h2>
-            <p class="section-head__lead">{arriendos.length} propiedades disponibles.</p>
-          </header>
-          <PropertyGrid properties={arriendos} />
+      <div class="listing__toolbar">
+        <div class="view-toggle" role="tablist" aria-label="Vista de propiedades">
+          <button class="view-toggle__btn is-active" type="button" data-view-btn="lista" role="tab" aria-selected="true">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            Lista
+          </button>
+          <button class="view-toggle__btn" type="button" data-view-btn="mapa" role="tab" aria-selected="false">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+            Mapa
+          </button>
         </div>
-      </section>
-    )}
-  </div>
+      </div>
+
+      <div data-view="lista">
+        <PropertyGrid properties={all} />
+        <p class="listing__empty" data-empty hidden>
+          No encontramos propiedades con esos filtros. Prueba ampliar la búsqueda.
+        </p>
+      </div>
+
+      <div data-view="mapa" hidden>
+        <PropertyMap properties={all} />
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.querySelector('[data-filters]');
+    const listView = document.querySelector('[data-view="lista"]');
+    const mapView = document.querySelector('[data-view="mapa"]');
+    if (form && listView && mapView) {
+      const items = Array.from(listView.querySelectorAll('.property-grid__item'));
+      const shown = document.querySelector('[data-filter-shown]');
+      const totalEl = document.querySelector('[data-filter-total]');
+      const empty = document.querySelector('[data-empty]');
+      const resetBtn = document.querySelector('[data-filter-reset]');
+      const qInput = form.querySelector('[data-filter-q]') as HTMLInputElement;
+      const comunaSel = form.querySelector('[data-filter-comuna]') as HTMLSelectElement;
+      const tipoSel = form.querySelector('[data-filter-tipo]') as HTMLSelectElement;
+      const opRadios = Array.from(form.querySelectorAll('[data-filter-op]')) as HTMLInputElement[];
+      const viewBtns = Array.from(document.querySelectorAll('[data-view-btn]')) as HTMLButtonElement[];
+
+      if (totalEl) totalEl.textContent = String(items.length);
+
+      const state = () => ({
+        q: (qInput?.value || '').trim().toLowerCase(),
+        op: (opRadios.find((r) => r.checked)?.value) || '',
+        comuna: comunaSel?.value || '',
+        tipo: tipoSel?.value || '',
+      });
+
+      function syncUrl(s: ReturnType<typeof state>) {
+        const u = new URLSearchParams();
+        if (s.q) u.set('q', s.q);
+        if (s.op) u.set('op', s.op);
+        if (s.comuna) u.set('comuna', s.comuna);
+        if (s.tipo) u.set('tipo', s.tipo);
+        const qs = u.toString();
+        history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+      }
+
+      function apply() {
+        const s = state();
+        const visible: string[] = [];
+        let n = 0;
+        for (const li of items) {
+          const c = li.querySelector('.property-card') as HTMLElement | null;
+          const d = c?.dataset || {};
+          const ok =
+            (!s.op || d.operacion === s.op) &&
+            (!s.comuna || d.comuna === s.comuna) &&
+            (!s.tipo || d.tipo === s.tipo) &&
+            (!s.q || (d.buscar || '').includes(s.q));
+          (li as HTMLElement).hidden = !ok;
+          if (ok) { n++; if (d.slug) visible.push(d.slug); }
+        }
+        if (shown) shown.textContent = String(n);
+        if (empty) (empty as HTMLElement).hidden = n > 0;
+        if (resetBtn) (resetBtn as HTMLElement).hidden = !(s.q || s.op || s.comuna || s.tipo);
+        const gm = (window as any).griinMap;
+        if (gm) gm.show(visible);
+        syncUrl(s);
+      }
+
+      // Hidratar desde la URL (incluye el ?q= que manda el buscador del Hero).
+      const params = new URLSearchParams(location.search);
+      if (qInput && params.get('q')) qInput.value = params.get('q')!;
+      if (comunaSel && params.get('comuna')) comunaSel.value = params.get('comuna')!;
+      if (tipoSel && params.get('tipo')) tipoSel.value = params.get('tipo')!;
+      const op0 = params.get('op');
+      if (op0) { const r = opRadios.find((r) => r.value === op0); if (r) r.checked = true; }
+
+      form.addEventListener('input', apply);
+      form.addEventListener('submit', (e) => e.preventDefault());
+      resetBtn?.addEventListener('click', () => {
+        if (qInput) qInput.value = '';
+        if (comunaSel) comunaSel.value = '';
+        if (tipoSel) tipoSel.value = '';
+        const a = opRadios.find((r) => r.value === ''); if (a) a.checked = true;
+        apply();
+      });
+
+      // Toggle Lista / Mapa
+      viewBtns.forEach((b) => b.addEventListener('click', () => {
+        const v = b.dataset.viewBtn;
+        (listView as HTMLElement).hidden = v !== 'lista';
+        (mapView as HTMLElement).hidden = v !== 'mapa';
+        viewBtns.forEach((x) => {
+          const on = x === b;
+          x.classList.toggle('is-active', on);
+          x.setAttribute('aria-selected', String(on));
+        });
+        if (v === 'mapa') { const gm = (window as any).griinMap; if (gm) { gm.refresh(); } }
+      }));
+
+      apply();
+    }
+  </script>
+
+  <style>
+    .listing { display: flex; flex-direction: column; gap: clamp(1.5rem, 4vw, 2.25rem); }
+    .listing__toolbar { display: flex; justify-content: flex-end; }
+    .listing__empty {
+      padding-block: 3rem;
+      text-align: center;
+      color: var(--color-ink-muted);
+    }
+    .view-toggle {
+      display: inline-flex;
+      padding: 0.25rem;
+      border: 1px solid var(--color-border-strong);
+      border-radius: var(--radius-pill);
+      background-color: var(--color-surface-sunken);
+    }
+    .view-toggle__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1rem;
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-ink-soft);
+      background-color: transparent;
+      border: 0;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: background-color var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+    }
+    .view-toggle__btn.is-active { background-color: var(--color-brand); color: var(--color-on-brand); }
+    .view-toggle__btn:focus-visible { outline: 2px solid var(--color-focus-ring); outline-offset: 2px; }
+  </style>
 </BaseLayout>

@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import EntregaForm from '../components/EntregaForm.astro';
+import { getConfig } from '../lib/content';
+
+const config = await getConfig();
+const { whatsapp, contacto: info } = config;
+const waUrl = `https://wa.me/${whatsapp.numero}?text=${encodeURIComponent('Hola, quiero entregar mi propiedad para venta o arriendo.')}`;
+
+const title = `Entréganos tu propiedad — ${config.marca.nombre}`;
+const description =
+  'Publica tu propiedad con Griin. Nos encargamos de la promoción, el filtrado de interesados y el acompañamiento en todo el proceso de venta o arriendo.';
+---
+
+<BaseLayout title={title} description={description}>
+  <PageHero
+    eyebrow="Vende o arrienda con nosotros"
+    title="Entréganos tu propiedad"
+    lead="Completa el formulario y nuestro equipo te contactará para evaluar tu propiedad y coordinar los siguientes pasos."
+  />
+
+  <section class="section">
+    <div class="container entrega__grid">
+      <div class="entrega__form-card">
+        <h2 class="entrega__form-title">Ingresa los datos de tu propiedad</h2>
+        <EntregaForm />
+      </div>
+
+      <aside class="entrega__aside">
+        <h2 class="entrega__aside-title">¿Por qué con Griin?</h2>
+        <ul class="entrega__points" role="list">
+          <li>Valoración estratégica según mercado y ubicación.</li>
+          <li>Precalificamos compradores y arrendatarios.</li>
+          <li>Acompañamiento integral en cada etapa.</li>
+          <li>Sin contratos exclusivos.</li>
+        </ul>
+        <div class="entrega__contact">
+          <p class="entrega__contact-label">¿Prefieres hablar directo?</p>
+          <a class="btn btn--light" href={waUrl} target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+          <a class="entrega__contact-mail" href={`mailto:${info.email}`}>{info.email}</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <style>
+    .entrega__grid {
+      display: grid;
+      gap: clamp(1.75rem, 4vw, 3rem);
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+    .entrega__form-card {
+      padding: clamp(1.25rem, 3vw, 2rem);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background-color: var(--color-surface);
+      box-shadow: var(--shadow-card);
+    }
+    .entrega__form-title,
+    .entrega__aside-title {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      color: var(--color-ink);
+      margin-block: 0 1.25rem;
+    }
+    .entrega__points {
+      list-style: none;
+      margin: 0 0 1.75rem;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .entrega__points li {
+      position: relative;
+      padding-inline-start: 1.6rem;
+      color: var(--color-ink-soft);
+      line-height: 1.5;
+    }
+    .entrega__points li::before {
+      content: '';
+      position: absolute;
+      inset-block-start: 0.55em;
+      inset-inline-start: 0;
+      inline-size: 0.55rem;
+      block-size: 0.55rem;
+      border-radius: 50%;
+      background-color: var(--color-brand);
+    }
+    .entrega__contact {
+      padding-block-start: 1.25rem;
+      border-block-start: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .entrega__contact-label { margin: 0; font-weight: 600; color: var(--color-ink); }
+    .entrega__contact-mail { color: var(--color-brand-strong); font-weight: 600; }
+
+    @media (min-width: 60rem) {
+      .entrega__grid { grid-template-columns: 1.5fr 1fr; }
+    }
+  </style>
+</BaseLayout>

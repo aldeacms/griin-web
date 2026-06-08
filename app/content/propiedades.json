@@ -122,7 +122,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.115886,
+    "longitud": -73.062034
   },
   {
     "slug": "se-vende-moderna-casa-en-frutillar-cod-1014",
@@ -262,7 +265,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.13295,
+    "longitud": -73.058098
   },
   {
     "slug": "venta-casa-en-parcela-en-frutillar-cod-1015",
@@ -358,7 +364,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.126662,
+    "longitud": -73.060594
   },
   {
     "slug": "hermosa-parcela-cercada-en-fundo-praderas-de-frutillar-cod-1002",
@@ -366,7 +375,7 @@
     "titulo": "Hermosa Parcela Cercada en Fundo Praderas de Frutillar",
     "operacion": "venta",
     "tipo": "parcela",
-    "comuna": "Fundo Praderas de Frutillar",
+    "comuna": "Frutillar",
     "precio_clp": 58000000,
     "precio_uf": 1463,
     "superficie_construida_m2": "",
@@ -435,7 +444,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.129588,
+    "longitud": -73.055832
   },
   {
     "slug": "se-vende-parcela-lista-para-construir-en-frutillar-cod-1003",
@@ -443,7 +455,7 @@
     "titulo": "Se vende parcela lista para construir en Frutillar",
     "operacion": "venta",
     "tipo": "parcela",
-    "comuna": "Frutillar, 10 min del centro por ruta V-200 hacia Tegualda",
+    "comuna": "Frutillar",
     "precio_clp": 42000000,
     "precio_uf": 1042,
     "superficie_construida_m2": "",
@@ -517,7 +529,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.127956,
+    "longitud": -73.057944
   },
   {
     "slug": "parcela-5000-m2-con-servicios-operativos-en-frutillar-cod-1004",
@@ -592,7 +607,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.114758,
+    "longitud": -73.051426
   },
   {
     "slug": "venta-de-hermosa-parcela-con-arboles-en-frutillar-cod-1005",
@@ -663,7 +681,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.130598,
+    "longitud": -73.066114
   },
   {
     "slug": "se-vende-preciosa-parcela-con-linda-vista-hacia-el-volcan-osorno-cod-1006",
@@ -671,7 +692,7 @@
     "titulo": "Se Vende Preciosa Parcela con Linda Vista Hacia el Volcán Osorno",
     "operacion": "venta",
     "tipo": "parcela",
-    "comuna": "13 minutos del centro de Frutillar",
+    "comuna": "Frutillar",
     "precio_clp": 52000000,
     "precio_uf": 1300,
     "superficie_construida_m2": "",
@@ -734,7 +755,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.12798,
+    "longitud": -73.067784
   },
   {
     "slug": "se-vende-linda-parcela-con-vista-a-bosque-en-frutillar-cod-1007",
@@ -742,7 +766,7 @@
     "titulo": "Se Vende Linda Parcela con Vista a Bosque en Frutillar",
     "operacion": "venta",
     "tipo": "parcela",
-    "comuna": "Fundo Praderas de Frutillar, 13 minutos del centro de Frutillar",
+    "comuna": "Frutillar",
     "precio_clp": 51000000,
     "precio_uf": 1273,
     "superficie_construida_m2": "",
@@ -809,7 +833,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.129228,
+    "longitud": -73.046448
   },
   {
     "slug": "se-vende-linda-parcela-con-vista-al-volcan-osorno-en-frutillar-cod-1008",
@@ -883,7 +910,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.11867,
+    "longitud": -73.066234
   },
   {
     "slug": "oportunidad-de-compra-hermosa-parcela-en-frutillar-cod-1009",
@@ -954,7 +984,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.125318,
+    "longitud": -73.063234
   },
   {
     "slug": "venta-de-hermosa-parcela-con-vista-al-volcan-osorno-cod-1010",
@@ -962,7 +995,7 @@
     "titulo": "Venta de Hermosa Parcela con Vista a Volcán Osorno",
     "operacion": "venta",
     "tipo": "parcela",
-    "comuna": "13 min del centro de Frutillar",
+    "comuna": "Frutillar",
     "precio_clp": 58000000,
     "precio_uf": 1463,
     "superficie_construida_m2": "",
@@ -1025,7 +1058,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.134868,
+    "longitud": -73.049928
   },
   {
     "slug": "oportunidad-de-compra-parcela-a-10-minutos-del-centro-de-frutillar-cod-1001",
@@ -1033,7 +1069,7 @@
     "titulo": "Oportunidad de Compra Parcela a 10 Minutos del Centro de Frutillar",
     "operacion": "venta",
     "tipo": "parcela",
-    "comuna": "Frutillar, 10 minutos del centro",
+    "comuna": "Frutillar",
     "precio_clp": 55000000,
     "precio_uf": 1387,
     "superficie_construida_m2": "",
@@ -1111,7 +1147,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.126564,
+    "longitud": -73.05396
   },
   {
     "slug": "arriendo-cabana-en-frutillar-bajo",
@@ -1180,7 +1219,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.139293,
+    "longitud": -73.03575
   },
   {
     "slug": "arriendo-cabana-en-los-bajos-frutillar-cod-a102",
@@ -1260,7 +1302,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.075816,
+    "longitud": -72.932
   },
   {
     "slug": "arriendo-casa-en-parcela-en-frutillar-cod-a104",
@@ -1356,7 +1401,10 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.115214,
+    "longitud": -73.051282
   },
   {
     "slug": "arriendo-casa-en-panitao-puerto-montt-cod-a103",
@@ -1364,7 +1412,7 @@
     "titulo": "Casa en arriendo Sector Panitao, Puerto Montt",
     "operacion": "arriendo",
     "tipo": "casa",
-    "comuna": "Panitao, Puerto Montt",
+    "comuna": "Puerto Montt",
     "precio_clp": 500000,
     "precio_uf": "",
     "superficie_construida_m2": 92,
@@ -1479,6 +1527,9 @@
     ],
     "video_url": "",
     "destacado": false,
-    "estado": "disponible"
+    "estado": "disponible",
+    "direccion": "",
+    "latitud": -41.519562,
+    "longitud": -73.062329
   }
 ]

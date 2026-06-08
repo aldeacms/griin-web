@@ -31,6 +31,10 @@
       "url": "/somos"
     },
     {
+      "label": "Entréganos tu propiedad",
+      "url": "/entreganos-tu-propiedad"
+    },
+    {
       "label": "Contacto",
       "url": "/contacto"
     }

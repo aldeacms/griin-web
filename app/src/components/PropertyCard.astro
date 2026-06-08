@@ -1,6 +1,7 @@
 ---
 import type { Property } from '../types/griin';
 import { formatCLP, formatUF, formatM2, imgSrc, imgAlt } from '../lib/content';
+import { tipoLabel } from '../lib/property-labels';
 
 interface Props {
   property: Property;
@@ -16,7 +17,11 @@ const coverAlt = imgAlt(cover, p.titulo);
 
 const opLabel = p.operacion === 'venta' ? 'En venta' : 'En arriendo';
 const isArriendo = p.operacion === 'arriendo';
-const tipoLabel = p.tipo.charAt(0).toUpperCase() + p.tipo.slice(1);
+const tipo = tipoLabel(p.tipo);
+const comuna = p.comuna?.trim() ?? '';
+
+// Índice de búsqueda en minúscula: título + dirección + código + comuna.
+const buscar = [p.titulo, p.direccion, p.codigo, comuna].filter(Boolean).join(' ').toLowerCase();
 
 // Precio principal según operación: arriendo es mensual (CLP), venta muestra CLP + UF.
 const priceMain = formatCLP(p.precio_clp);
@@ -42,10 +47,12 @@ const icons: Record<string, string> = {
 
 <article
   class="property-card"
+  data-slug={p.slug}
   data-operacion={p.operacion}
   data-tipo={p.tipo}
-  data-comuna={p.comuna}
+  data-comuna={comuna}
   data-estado={p.estado}
+  data-buscar={buscar}
 >
   <a class="property-card__link" href={`/propiedades/${p.slug}`}>
     <div class="property-card__media">
@@ -67,7 +74,7 @@ const icons: Record<string, string> = {
     </div>
 
     <div class="property-card__body">
-      <p class="property-card__meta">{tipoLabel} · {p.comuna}</p>
+      <p class="property-card__meta">{tipo} · {comuna}</p>
       <h3 class="property-card__title">{p.titulo}</h3>
 
       <p class="property-card__price">

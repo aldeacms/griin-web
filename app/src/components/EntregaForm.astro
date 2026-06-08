@@ -1,0 +1,178 @@
+---
+import { TIPO_LABELS } from '../lib/property-labels';
+
+// Opciones de tipo para el select (ordenadas por etiqueta).
+const tipos = Object.entries(TIPO_LABELS)
+  .map(([value, label]) => ({ value, label }))
+  .sort((a, b) => a.label.localeCompare(b.label, 'es-CL'));
+---
+
+<form class="entrega-form" data-entrega-form data-success="¡Gracias! Recibimos tu propiedad. Te contactaremos para coordinar las fotos y los siguientes pasos." novalidate>
+  <input type="text" name="_hp" tabindex="-1" autocomplete="off" class="visually-hidden" aria-hidden="true" />
+
+  <div class="entrega-form__row">
+    <div class="entrega-form__field">
+      <label class="entrega-form__label" for="ef-nombre">Nombre *</label>
+      <input class="entrega-form__input" id="ef-nombre" name="first_name" type="text" autocomplete="name" required />
+    </div>
+    <div class="entrega-form__field">
+      <label class="entrega-form__label" for="ef-correo">Correo *</label>
+      <input class="entrega-form__input" id="ef-correo" name="email" type="email" autocomplete="email" required />
+    </div>
+  </div>
+
+  <div class="entrega-form__row">
+    <div class="entrega-form__field">
+      <label class="entrega-form__label" for="ef-telefono">Teléfono *</label>
+      <input class="entrega-form__input" id="ef-telefono" name="phone" type="tel" inputmode="tel" autocomplete="tel" required />
+    </div>
+    <div class="entrega-form__field">
+      <label class="entrega-form__label" for="ef-rut">Rut *</label>
+      <input class="entrega-form__input" id="ef-rut" name="rut" type="text" required />
+    </div>
+  </div>
+
+  <div class="entrega-form__row">
+    <div class="entrega-form__field">
+      <label class="entrega-form__label" for="ef-tipo">Tipo de propiedad *</label>
+      <select class="entrega-form__input" id="ef-tipo" name="tipo_propiedad" required>
+        <option value="" disabled selected>Selecciona…</option>
+        {tipos.map((t) => <option value={t.value}>{t.label}</option>)}
+      </select>
+    </div>
+    <div class="entrega-form__field">
+      <label class="entrega-form__label" for="ef-transaccion">Tipo de transacción *</label>
+      <select class="entrega-form__input" id="ef-transaccion" name="tipo_transaccion" required>
+        <option value="" disabled selected>Selecciona…</option>
+        <option value="venta">Venta</option>
+        <option value="arriendo">Arriendo</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="entrega-form__row">
+    <div class="entrega-form__field">
+      <label class="entrega-form__label" for="ef-comuna">Comuna donde se encuentra *</label>
+      <input class="entrega-form__input" id="ef-comuna" name="comuna" type="text" required />
+    </div>
+    <div class="entrega-form__field">
+      <label class="entrega-form__label" for="ef-valor">Valor de la propiedad *</label>
+      <input class="entrega-form__input" id="ef-valor" name="valor" type="text" inputmode="numeric" placeholder="Ej: UF 4.000 o $180.000.000" required />
+    </div>
+  </div>
+
+  <div class="entrega-form__field">
+    <label class="entrega-form__label" for="ef-direccion">Dirección *</label>
+    <input class="entrega-form__input" id="ef-direccion" name="direccion" type="text" required />
+  </div>
+
+  <div class="entrega-form__field">
+    <label class="entrega-form__label" for="ef-detalle">Detalle de la propiedad *</label>
+    <textarea class="entrega-form__input entrega-form__textarea" id="ef-detalle" name="message" rows="5" required></textarea>
+  </div>
+
+  <p class="entrega-form__photos">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></svg>
+    <span>Las fotos las coordinamos contigo por <strong>WhatsApp o correo</strong> apenas recibamos esta información (idealmente horizontales, hasta 10).</span>
+  </p>
+
+  <div class="entrega-form__foot">
+    <button class="btn btn--primary" type="submit">Enviar</button>
+    <p class="entrega-form__status" data-form-status role="status" aria-live="polite" hidden></p>
+  </div>
+</form>
+
+<script>
+  const FORM_ENDPOINT = 'https://api.lifefocus.agency/api/forms/submit/griin-entrega-propiedad';
+  const FORM_KEY = 'gr_entrega_8a2f4c1e9b7d3506a1c0e8b9d6f54231';
+
+  document.querySelectorAll<HTMLFormElement>('[data-entrega-form]').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('[data-form-status]');
+    const okMsg = form.dataset.success || '¡Gracias! Te contactaremos a la brevedad.';
+    const show = (msg: string, ok: boolean) => {
+      if (!status) return;
+      status.hidden = false;
+      status.textContent = msg;
+      status.dataset.ok = ok ? '1' : '0';
+    };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      if (fd.get('_hp')) return;
+      const payload: Record<string, string> = {};
+      fd.forEach((v, k) => { if (k !== '_hp') payload[k] = String(v); });
+      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]');
+      if (btn) btn.disabled = true;
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'X-Focus-Form-Key': FORM_KEY },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error('status ' + res.status);
+        show(okMsg, true);
+        form.reset();
+        const w = window as unknown as { focusTrack?: (ev: string) => void };
+        if (typeof w.focusTrack === 'function') w.focusTrack('form_submit');
+      } catch {
+        show('No pudimos enviar el formulario. Intenta nuevamente o escríbenos por WhatsApp.', false);
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .entrega-form { display: flex; flex-direction: column; gap: 1.1rem; }
+  .entrega-form__row { display: grid; gap: 1.1rem; grid-template-columns: 1fr; }
+  .entrega-form__field { display: flex; flex-direction: column; gap: 0.4rem; }
+  .entrega-form__label {
+    font-family: var(--font-heading);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+  }
+  .entrega-form__input {
+    font: inherit;
+    color: var(--color-ink);
+    padding: 0.7rem 0.85rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  }
+  .entrega-form__input:focus {
+    outline: none;
+    border-color: var(--color-brand);
+    box-shadow: 0 0 0 3px var(--color-brand-soft);
+  }
+  .entrega-form__textarea { resize: vertical; min-block-size: 6rem; }
+  .entrega-form__photos {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0.85rem 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-ink-soft);
+    background-color: var(--color-brand-soft);
+    border-radius: var(--radius-md);
+  }
+  .entrega-form__photos svg { flex: none; color: var(--color-brand-strong); margin-block-start: 0.1rem; }
+  .entrega-form__foot { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+  .entrega-form__status {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--radius-md);
+  }
+  .entrega-form__status[data-ok='1'] { color: #166534; background-color: #dcfce7; }
+  .entrega-form__status[data-ok='0'] { color: #b91c1c; background-color: #fee2e2; }
+
+  @media (min-width: 38rem) {
+    .entrega-form__row { grid-template-columns: 1fr 1fr; }
+  }
+</style>

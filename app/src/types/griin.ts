@@ -26,13 +26,25 @@ export interface NavLink {
 
 export type Operacion = 'venta' | 'arriendo';
 export type TipoPropiedad =
-  | 'parcela'
   | 'casa'
-  | 'cabaña'
   | 'departamento'
+  | 'cabaña'
+  | 'parcela'
+  | 'sitio'
   | 'terreno'
+  | 'terreno_industrial'
   | 'oficina'
-  | 'campo';
+  | 'local_comercial'
+  | 'bodega'
+  | 'industrial'
+  | 'edificio'
+  | 'hotel'
+  | 'hostal'
+  | 'propiedad_turistica'
+  | 'conservacion'
+  | 'estacionamiento'
+  | 'atracadero'
+  | 'otra';
 export type EstadoPropiedad = 'disponible' | 'reservada' | 'vendida';
 
 export interface Property {
@@ -42,6 +54,9 @@ export interface Property {
   operacion: Operacion;
   tipo: TipoPropiedad;
   comuna: string;
+  direccion: string;
+  latitud: number | null;
+  longitud: number | null;
   precio_clp: number | null;
   precio_uf: number | null;
   superficie_construida_m2: number | null;
