@@ -81,7 +81,9 @@ const markers = properties
       bySlug.set(m.slug, mk);
     }
 
+    let currentSlugs: Set<string> | null = null;
     function fitTo(slugs: Set<string> | null) {
+      currentSlugs = slugs;
       layer.clearLayers();
       const pts: L.LatLngExpression[] = [];
       for (const [slug, mk] of bySlug) {
@@ -92,9 +94,14 @@ const markers = properties
     fitTo(null);
 
     // Controlador global para que los filtros del listado sincronicen el mapa.
+    // refresh() corrige el tamaño (Leaflet se inicializa en un contenedor oculto
+    // con size 0) y RE-AJUSTA los bounds a los markers visibles tras un frame.
     (window as unknown as { griinMap?: unknown }).griinMap = {
       show(slugs: string[]) { fitTo(new Set(slugs)); },
-      refresh() { map.invalidateSize(); },
+      refresh() {
+        map.invalidateSize();
+        requestAnimationFrame(() => { map.invalidateSize(); fitTo(currentSlugs); });
+      },
     };
   }
 </script>
